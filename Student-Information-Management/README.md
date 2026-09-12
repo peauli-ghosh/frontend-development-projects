@@ -1,8 +1,3 @@
-Absolutely. For the **Assignment 2 `Student-Information-Management`** project, use this README.
-
-### `README.md`
-
-````md
 # Student Information Management System
 
 A React-based Student Information Management System developed for the Advanced Front-End Development course.
@@ -150,4 +145,3 @@ npm run build
 
 This project is developed as an academic React front-end project for demonstrating practical implementation of React Props and component-based development.
 
-````
