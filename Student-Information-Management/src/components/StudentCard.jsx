@@ -2,38 +2,66 @@ function StudentCard({
   name,
   rollNumber,
   department,
+  section,
   semester,
   cgpa,
   photo,
+  onClick,
 }) {
   return (
-    <div className="student-card">
-      <img
-        src={photo}
-        alt={name}
-        className="student-photo"
-      />
+    <article
+      className="student-card"
+      onClick={onClick}
+      tabIndex="0"
+      role="button"
+      onKeyDown={(event) => {
+        if (
+          event.key === "Enter" ||
+          event.key === " "
+        ) {
+          onClick();
+        }
+      }}
+    >
+      <div className="student-card-top">
+        <img
+          src={photo}
+          alt={name}
+          className="student-photo"
+        />
 
-      <div className="student-info">
-        <h2>{name}</h2>
+        <div className="student-heading">
+          <h3>{name}</h3>
 
-        <p>
-          <strong>Roll Number:</strong> {rollNumber}
-        </p>
+          <p>
+            {department} · Section {section}
+          </p>
+        </div>
 
-        <p>
-          <strong>Department:</strong> {department}
-        </p>
-
-        <p>
-          <strong>Semester:</strong> {semester}
-        </p>
-
-        <p>
-          <strong>CGPA:</strong> {cgpa}
-        </p>
+        <span className="card-arrow">↗</span>
       </div>
-    </div>
+
+      <div className="student-details">
+        <div className="detail-item">
+          <span>Roll Number</span>
+          <strong>{rollNumber}</strong>
+        </div>
+
+        <div className="detail-item">
+          <span>Semester</span>
+          <strong>{semester}</strong>
+        </div>
+
+        <div className="detail-item cgpa-item">
+          <span>CGPA</span>
+          <strong>{cgpa}</strong>
+        </div>
+      </div>
+
+      <div className="click-hint">
+        Click to view complete profile
+      </div>
+    </article>
   );
 }
 

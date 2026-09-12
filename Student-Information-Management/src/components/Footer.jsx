@@ -1,7 +1,16 @@
 function Footer() {
   return (
     <footer className="footer">
-      <p>Student Information Portal</p>
+      <div>
+        <strong>
+          Techno India University, Kolkata
+        </strong>
+
+        <span>
+          Student Information Portal
+        </span>
+      </div>
+
       <p>React Props Assignment</p>
     </footer>
   );

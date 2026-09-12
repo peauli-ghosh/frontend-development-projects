@@ -1,105 +1,4590 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap");
+
+:root {
+  --tiu-red: #e52b2f;
+  --tiu-red-dark: #c92125;
+  --tiu-red-light: #fde8e8;
+
+  --tiu-purple: #29223f;
+  --tiu-purple-light: #eee9f4;
+
+  --tiu-green: #e6f1dd;
+}
+
+
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
+:root {
+  font-family: "DM Sans", Arial, sans-serif;
+  color: #1c1930;
+  background: #eef0f3;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  font-family: Arial, sans-serif;
-  background: #f4f6f8;
-  color: #222;
+  min-width: 320px;
+  min-height: 100vh;
+  background: #eef0f3;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
 }
 
 .app {
   min-height: 100vh;
+  background: #eef0f3;
+  transition: 0.25s ease;
 }
 
-.header {
-  padding: 30px;
+/* =========================
+   HEADER
+========================= */
+
+.topbar {
+  height: 92px;
+  padding: 0 36px;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #e4e2e7;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.topbar h1 {
+  font-size: 24px;
+  line-height: 1.2;
+  margin-top: 4px;
+}
+
+.eyebrow {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: #77728a;
+}
+
+.theme-toggle {
+  border: 1px solid #ddd9e4;
+  background: #ffffff;
+  color: #28233d;
+  border-radius: 12px;
+  padding: 10px 16px;
+  font-weight: 600;
+}
+
+/* =========================
+   MAIN LAYOUT
+========================= */
+
+.dashboard-layout {
+  width: min(1500px, calc(100% - 48px));
+  margin: 24px auto;
+  display: grid;
+
+  /*
+    Fixed side widths prevent the left panel
+    from expanding strangely when zoom changes.
+  */
+  grid-template-columns: 210px minmax(0, 1fr) 270px;
+
+  gap: 24px;
+  align-items: start;
+}
+
+/* =========================
+   LEFT PANEL
+========================= */
+
+.sidebar {
+  width: 210px;
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 24px 16px;
+
+  height: calc(100vh - 140px);
+
+  position: sticky;
+  top: 116px;
+
+  display: flex;
+  flex-direction: column;
+
+  overflow: hidden;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 8px 28px;
+}
+
+.brand-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 11px;
+  background: #29223f;
+  color: #ffffff;
+
+  display: grid;
+  place-items: center;
+
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.brand strong,
+.brand span {
+  display: block;
+}
+
+.brand strong {
+  font-size: 15px;
+}
+
+.brand span {
+  font-size: 12px;
+  color: #827d8e;
+  margin-top: 2px;
+}
+
+.navigation {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.nav-item {
+  width: 100%;
+  border: none;
+  background: transparent;
+  padding: 12px;
+  border-radius: 11px;
+
+  text-align: left;
+  color: #777184;
+
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  font-weight: 500;
+}
+
+.nav-item span {
+  width: 20px;
   text-align: center;
-  background: #243b55;
+}
+
+.nav-item:hover {
+  background: #f2eff6;
+  color: #27213e;
+}
+
+.nav-item.active {
+  background: #29223f;
+  color: #ffffff;
+}
+
+/* HELP */
+
+.help-card {
+  margin-top: 32px;
+
+  border: none;
+  background: #29223f;
   color: white;
+
+  border-radius: 16px;
+  padding: 18px;
+
+  text-align: left;
+
+  transition: 0.2s ease;
 }
 
-.header h1 {
-  margin-bottom: 8px;
+.help-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(40, 31, 60, 0.18);
 }
 
-.student-section {
-  width: min(1100px, calc(100% - 40px));
-  margin: 40px auto;
+.help-icon {
+  width: 34px;
+  height: 34px;
+
+  background: #f6d94d;
+  color: #29223f;
+
+  border-radius: 50%;
+
+  display: grid;
+  place-items: center;
+
+  font-weight: 700;
+  margin-bottom: 14px;
 }
 
-.student-section > h2 {
-  margin-bottom: 20px;
+.help-card h3 {
+  font-size: 15px;
+  margin-bottom: 7px;
+}
+
+.help-card p {
+  color: #d4d0dc;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.help-link {
+  display: block;
+  margin-top: 12px;
+
+  color: #f6d94d;
+  font-size: 10px;
+  font-weight: 600;
+}
+
+/* =========================
+   MAIN
+========================= */
+
+.main-content {
+  min-width: 0;
+}
+
+.welcome-section {
+  background: #ffffff;
+  border-radius: 20px;
+
+  padding: 26px 28px;
+  min-height: 150px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+
+  scroll-margin-top: 110px;
+}
+
+.dashboard-introduction {
+  max-width: 700px;
+}
+
+.welcome-section h2 {
   font-size: 28px;
+  margin: 5px 0;
 }
+
+.welcome-text {
+  color: #777184;
+  font-size: 13px;
+}
+
+.dashboard-context {
+  margin-top: 8px;
+  color: #888291;
+  font-size: 10px;
+  line-height: 1.55;
+  max-width: 670px;
+}
+
+.add-student-round {
+  width: 58px;
+  height: 58px;
+
+  border: none;
+  border-radius: 50%;
+
+  background: #f5d84b;
+  color: #29223f;
+
+  font-size: 30px;
+
+  box-shadow: 0 7px 18px rgba(45, 37, 62, 0.12);
+
+  flex-shrink: 0;
+}
+
+.add-student-round:hover {
+  transform: scale(1.05);
+}
+
+/* =========================
+   UNIVERSITY CONTEXT
+========================= */
+
+.context-strip {
+  background: #29223f;
+  color: #ffffff;
+
+  border-radius: 16px;
+
+  margin-top: 12px;
+  padding: 14px 18px;
+
+  display: grid;
+  grid-template-columns: 1.1fr 1.5fr 0.7fr;
+  gap: 15px;
+}
+
+.context-strip div {
+  min-width: 0;
+}
+
+.context-strip span {
+  display: block;
+  color: #b8b1c6;
+  font-size: 8px;
+  margin-bottom: 4px;
+}
+
+.context-strip strong {
+  display: block;
+  font-size: 10px;
+}
+
+/* =========================
+   STATS
+========================= */
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.stat-card {
+  background: #ffffff;
+  border-radius: 17px;
+
+  padding: 18px;
+
+  display: flex;
+  align-items: center;
+  gap: 13px;
+}
+
+.stat-icon {
+  width: 40px;
+  height: 40px;
+
+  border-radius: 12px;
+
+  display: grid;
+  place-items: center;
+
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.stat-icon.purple {
+  background: #eee9f4;
+  color: #4b385f;
+}
+
+.stat-icon.yellow {
+  background: #fff4b9;
+  color: #78650a;
+}
+
+.stat-icon.green {
+  background: #e6f1dd;
+  color: #50713d;
+}
+
+.stat-card span {
+  display: block;
+  color: #777184;
+  font-size: 10px;
+  margin-bottom: 3px;
+}
+
+.stat-card strong {
+  display: block;
+  font-size: 12px;
+}
+
+/* =========================
+   STUDENT SECTION
+========================= */
+
+.students-section {
+  background: #ffffff;
+  border-radius: 20px;
+
+  margin-top: 16px;
+  padding: 25px;
+
+  scroll-margin-top: 110px;
+}
+
+.section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+
+  gap: 15px;
+  margin-bottom: 14px;
+}
+
+.section-heading h2 {
+  font-size: 22px;
+  margin-top: 4px;
+}
+
+.section-description {
+  color: #888291;
+  font-size: 10px;
+  margin-top: 5px;
+}
+
+.student-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.search-box {
+  height: 38px;
+  width: 240px;
+
+  border: 1px solid #dedbe4;
+  border-radius: 9px;
+
+  display: flex;
+  align-items: center;
+
+  padding: 0 10px;
+  color: #777184;
+}
+
+.search-box span {
+  font-size: 19px;
+  margin-right: 5px;
+}
+
+.search-box input {
+  width: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+
+  color: #28233d;
+  font-size: 10px;
+}
+
+.clear-search {
+  border: none;
+  background: transparent;
+  color: #8b8494;
+  font-size: 18px;
+}
+
+.add-student-button {
+  border: none;
+  border-radius: 9px;
+
+  background: #29223f;
+  color: #ffffff;
+
+  padding: 10px 13px;
+
+  font-size: 11px;
+  font-weight: 600;
+}
+
+/* SORT */
 
 .sort-controls {
   display: flex;
-  gap: 10px;
-  margin-bottom: 25px;
+  gap: 7px;
   flex-wrap: wrap;
+
+  margin-bottom: 14px;
 }
 
 .sort-controls button {
-  padding: 10px 16px;
-  border: none;
-  border-radius: 6px;
-  background: #243b55;
-  color: white;
-  cursor: pointer;
+  border: 1px solid #dedbe4;
+
+  background: #ffffff;
+  color: #686273;
+
+  border-radius: 9px;
+
+  padding: 8px 11px;
+
+  font-size: 11px;
+  font-weight: 600;
 }
 
-.sort-controls button:hover {
-  background: #345678;
+.sort-controls button.selected {
+  background: #29223f;
+  color: #ffffff;
+  border-color: #29223f;
 }
+
+/* =========================
+   ONLY STUDENT RECORD LIST
+   GETS INTERNAL SCROLL
+========================= */
+
+.student-record-scroll {
+  max-height: 620px;
+
+  overflow-y: auto;
+
+  padding: 3px 5px 3px 0;
+
+  scrollbar-width: thin;
+}
+
+.student-record-scroll::-webkit-scrollbar {
+  width: 7px;
+}
+
+.student-record-scroll::-webkit-scrollbar-track {
+  background: #f1eff3;
+  border-radius: 10px;
+}
+
+.student-record-scroll::-webkit-scrollbar-thumb {
+  background: #c7c1ce;
+  border-radius: 10px;
+}
+
+/* STUDENT LIST */
 
 .student-list {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  gap: 14px;
 }
 
+/* STUDENT CARD */
+
 .student-card {
+  background: #f7f7f8;
+
+  border: 1px solid #ecebee;
+  border-radius: 16px;
+
+  padding: 17px;
+
+  transition: 0.2s ease;
+
+  outline: none;
+  cursor: pointer;
+}
+
+.student-card:hover,
+.student-card:focus {
+  transform: translateY(-2px);
+
+  border-color: #d8d0e0;
+
+  box-shadow:
+    0 8px 24px rgba(42, 34, 63, 0.08);
+}
+
+.student-card-top {
   display: flex;
-  gap: 20px;
-  padding: 20px;
-  border-radius: 10px;
-  background: white;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+  align-items: center;
+
+  gap: 13px;
+
+  padding-bottom: 15px;
+
+  border-bottom: 1px solid #e7e5e9;
 }
 
 .student-photo {
-  width: 120px;
-  height: 120px;
-  border-radius: 8px;
+  width: 58px;
+  height: 58px;
+
+  border-radius: 14px;
+
   object-fit: cover;
+
+  flex-shrink: 0;
 }
 
-.student-info h2 {
+.student-heading {
+  min-width: 0;
+  flex: 1;
+}
+
+.student-heading h3 {
+  font-size: 15px;
+  margin-bottom: 4px;
+}
+
+.student-heading p {
+  font-size: 10px;
+  color: #777184;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card-arrow {
+  color: #8a8393;
+  font-size: 18px;
+}
+
+.student-details {
+  display: grid;
+
+  grid-template-columns: 1.4fr 0.7fr 0.7fr;
+
+  gap: 10px;
+
+  padding-top: 15px;
+}
+
+.detail-item span {
+  display: block;
+
+  color: #8a8591;
+
+  font-size: 10px;
+  margin-bottom: 4px;
+}
+
+.detail-item strong {
+  font-size: 12px;
+}
+
+.cgpa-item strong {
+  color: #4d3b5e;
+}
+
+.click-hint {
+  margin-top: 13px;
+
+  font-size: 9px;
+  color: #9a95a1;
+}
+
+/* EMPTY */
+
+.empty-state {
+  text-align: center;
+
+  padding: 55px 20px;
+
+  color: #777184;
+}
+
+.empty-state div {
+  font-size: 35px;
+}
+
+.empty-state h3 {
+  color: #29223f;
+
+  margin: 8px 0 5px;
+}
+
+.empty-state p {
+  font-size: 12px;
+}
+
+/* =========================
+   SEMESTER
+========================= */
+
+.semester-section {
+  background: #ffffff;
+
+  border-radius: 20px;
+
+  margin-top: 16px;
+  padding: 25px;
+
+  scroll-margin-top: 110px;
+}
+
+.semester-section h2 {
+  margin-top: 5px;
+  font-size: 21px;
+}
+
+.semester-grid {
+  margin-top: 18px;
+
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+
+  gap: 12px;
+}
+
+.semester-grid div {
+  background: #f7f7f8;
+
+  border-radius: 13px;
+
+  padding: 15px;
+}
+
+.semester-grid span {
+  display: block;
+
+  font-size: 10px;
+  color: #827d8e;
+
+  margin-bottom: 6px;
+}
+
+.semester-grid strong {
+  font-size: 16px;
+}
+
+/* =========================
+   RIGHT PANEL
+========================= */
+
+.right-panel {
+  width: 270px;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 16px;
+
+  position: sticky;
+  top: 116px;
+
+  /*
+    No scrollbar here.
+    Everything is compact enough to remain visible.
+  */
+}
+
+.profile-card,
+.side-card {
+  background: #ffffff;
+
+  border-radius: 20px;
+  padding: 20px;
+}
+
+.profile-card {
+  text-align: center;
+}
+
+.profile-avatar {
+  width: 68px;
+  height: 68px;
+
+  border-radius: 50%;
+
+  background: #f5d84b;
+  color: #29223f;
+
+  display: grid;
+  place-items: center;
+
+  margin: 0 auto 11px;
+
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.profile-card h3 {
+  font-size: 13px;
+  margin-bottom: 4px;
+}
+
+.profile-card p {
+  color: #827d8e;
+  font-size: 9px;
+}
+
+.side-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
   margin-bottom: 12px;
 }
 
-.student-info p {
-  margin: 6px 0;
-  color: #555;
+.side-card-header h3 {
+  font-size: 13px;
 }
+
+/* ACADEMIC FILTER */
+
+.academic-selector-card label {
+  display: block;
+
+  color: #827d8e;
+
+  font-size: 9px;
+
+  margin-top: 9px;
+}
+
+.optional-label {
+  color: #aaa3af;
+  margin-left: 4px;
+}
+
+.academic-selector-card select {
+  display: block;
+
+  width: 100%;
+
+  margin-top: 5px;
+
+  padding: 8px;
+
+  border: 1px solid #dedbe4;
+
+  border-radius: 8px;
+
+  background: #faf9fb;
+  color: #29223f;
+
+  outline: none;
+
+  font-size: 9px;
+}
+
+.summary-submit {
+  width: 100%;
+
+  border: none;
+
+  margin-top: 11px;
+
+  padding: 9px;
+
+  border-radius: 8px;
+
+  background: #29223f;
+  color: white;
+
+  font-size: 9px;
+  font-weight: 600;
+}
+
+.summary-result {
+  margin-top: 10px;
+
+  padding: 10px;
+
+  border-radius: 9px;
+
+  background: #f1edf5;
+}
+
+.summary-result span,
+.summary-result strong,
+.summary-result small {
+  display: block;
+}
+
+.summary-result span {
+  color: #81798d;
+  font-size: 8px;
+}
+
+.summary-result strong {
+  font-size: 11px;
+  margin-top: 3px;
+}
+
+.summary-result small {
+  color: #777184;
+  font-size: 8px;
+  margin-top: 3px;
+}
+
+/* QUICK ACCESS */
+
+.quick-action {
+  width: 100%;
+
+  border: none;
+  background: transparent;
+
+  display: grid;
+
+  grid-template-columns: 30px minmax(0, 1fr) 12px;
+
+  gap: 8px;
+
+  align-items: center;
+
+  padding: 9px 0;
+
+  border-bottom: 1px solid #efedf0;
+
+  text-align: left;
+
+  color: #6c6575;
+}
+
+.quick-action:last-child {
+  border-bottom: none;
+}
+
+.quick-action:hover {
+  color: #29223f;
+}
+
+.quick-action-icon {
+  width: 27px;
+  height: 27px;
+
+  border-radius: 8px;
+
+  display: grid;
+  place-items: center;
+
+  font-weight: 700;
+
+  font-size: 10px;
+}
+
+.quick-action-icon.purple {
+  background: #eee9f4;
+  color: #59476d;
+}
+
+.quick-action-icon.green {
+  background: #e6f1dd;
+  color: #557a45;
+}
+
+.quick-action-icon.yellow {
+  background: #fff4b9;
+  color: #806d12;
+}
+
+.quick-action-icon.blue {
+  background: #e6edf6;
+  color: #506b8d;
+}
+
+.quick-action-icon.red {
+  background: #f5e5e5;
+  color: #9a4e4e;
+}
+
+.quick-action strong,
+.quick-action small {
+  display: block;
+}
+
+.quick-action strong {
+  font-size: 9px;
+}
+
+.quick-action small {
+  margin-top: 2px;
+
+  font-size: 7px;
+
+  color: #8a8591;
+}
+
+/* =========================
+   FOOTER
+========================= */
 
 .footer {
-  margin-top: 50px;
-  padding: 25px;
-  text-align: center;
-  background: #243b55;
-  color: white;
+  width: min(1500px, calc(100% - 48px));
+
+  margin: 0 auto;
+
+  padding: 20px 0 30px;
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  color: #777184;
+
+  font-size: 10px;
 }
 
-@media (max-width: 700px) {
+.footer div {
+  display: flex;
+
+  gap: 12px;
+
+  align-items: center;
+}
+
+.footer strong {
+  color: #4a4453;
+}
+
+.footer span {
+  padding-left: 12px;
+
+  border-left: 1px solid #ccc8d0;
+}
+
+/* =========================
+   MODALS
+========================= */
+
+.modal-overlay {
+  position: fixed;
+
+  inset: 0;
+
+  background: rgba(24, 21, 31, 0.58);
+
+  backdrop-filter: blur(4px);
+
+  display: grid;
+
+  place-items: center;
+
+  padding: 20px;
+
+  z-index: 100;
+}
+
+.student-modal {
+  position: relative;
+
+  width: min(560px, 100%);
+
+  max-height: 90vh;
+
+  overflow-y: auto;
+
+  background: #ffffff;
+
+  border-radius: 22px;
+
+  padding: 30px;
+
+  box-shadow:
+    0 20px 60px rgba(20, 15, 30, 0.2);
+
+  animation: modalIn 0.18s ease;
+}
+
+@keyframes modalIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.close-button {
+  position: absolute;
+
+  top: 15px;
+  right: 17px;
+
+  width: 32px;
+  height: 32px;
+
+  border: none;
+
+  border-radius: 50%;
+
+  background: #f1eff3;
+
+  color: #4d4755;
+
+  font-size: 21px;
+}
+
+/* STUDENT PROFILE */
+
+.modal-student-header {
+  display: flex;
+
+  align-items: center;
+
+  gap: 17px;
+
+  margin-bottom: 22px;
+}
+
+.modal-photo {
+  width: 82px;
+  height: 82px;
+
+  object-fit: cover;
+
+  border-radius: 20px;
+}
+
+.student-modal h2 {
+  margin: 5px 0;
+
+  font-size: 24px;
+}
+
+.modal-department {
+  color: #827d8e;
+
+  font-size: 11px;
+}
+
+.student-profile-grid {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 10px;
+}
+
+.student-profile-grid div,
+.analytics-grid div {
+  background: #f6f5f7;
+
+  border-radius: 12px;
+
+  padding: 13px;
+}
+
+.student-profile-grid span,
+.analytics-grid span {
+  display: block;
+
+  color: #827d8e;
+
+  font-size: 9px;
+
+  margin-bottom: 5px;
+}
+
+.student-profile-grid strong,
+.analytics-grid strong {
+  display: block;
+
+  font-size: 11px;
+
+  overflow-wrap: anywhere;
+}
+
+.performance-box {
+  margin-top: 15px;
+
+  background: #f6f5f7;
+
+  border-radius: 12px;
+
+  padding: 14px;
+
+  display: grid;
+
+  grid-template-columns: 1fr auto;
+
+  gap: 15px;
+
+  align-items: center;
+}
+
+.performance-box span {
+  display: block;
+
+  color: #827d8e;
+
+  font-size: 9px;
+
+  margin-bottom: 7px;
+}
+
+.progress-bar {
+  height: 7px;
+
+  background: #ded9e2;
+
+  border-radius: 10px;
+
+  overflow: hidden;
+}
+
+.progress-bar div {
+  height: 100%;
+
+  background: #7c9a68;
+
+  border-radius: 10px;
+}
+
+/* =========================
+   HELP
+========================= */
+
+.help-modal {
+  width: min(620px, 100%);
+}
+
+.guide-content {
+  display: grid;
+
+  gap: 10px;
+
+  margin-top: 20px;
+}
+
+.guide-content > div {
+  background: #f6f5f7;
+
+  border-radius: 11px;
+
+  padding: 12px;
+}
+
+.guide-content strong {
+  display: block;
+
+  font-size: 11px;
+
+  margin-bottom: 5px;
+}
+
+.guide-content p {
+  color: #706979;
+
+  font-size: 9px;
+
+  line-height: 1.6;
+}
+
+.support-box {
+  margin-top: 18px;
+
+  padding: 15px;
+
+  border-radius: 12px;
+
+  background: #29223f;
+
+  color: #ffffff;
+}
+
+.support-box strong {
+  display: block;
+
+  font-size: 12px;
+
+  margin-bottom: 5px;
+}
+
+.support-box p {
+  color: #d2ceda;
+
+  font-size: 9px;
+
+  margin-bottom: 8px;
+}
+
+.support-box a {
+  color: #f5d84b;
+
+  font-size: 10px;
+
+  font-weight: 600;
+}
+
+/* =========================
+   ACADEMIC ANALYSIS
+========================= */
+
+.academic-modal {
+  width: min(650px, 100%);
+}
+
+.analytics-grid {
+  display: grid;
+
+  grid-template-columns: repeat(4, 1fr);
+
+  gap: 9px;
+
+  margin-top: 20px;
+}
+
+.analytics-title {
+  margin: 24px 0 13px;
+
+  font-size: 14px;
+}
+
+.department-row {
+  margin-bottom: 13px;
+}
+
+.department-label {
+  display: flex;
+
+  justify-content: space-between;
+
+  margin-bottom: 5px;
+
+  font-size: 10px;
+}
+
+.department-label span {
+  color: #6d6675;
+}
+
+.chart-track {
+  height: 9px;
+
+  background: #eeeaf1;
+
+  border-radius: 10px;
+
+  overflow: hidden;
+}
+
+.chart-fill {
+  height: 100%;
+
+  background: #5a496b;
+
+  border-radius: 10px;
+
+  min-width: 4px;
+}
+
+.analysis-highlight {
+  margin-top: 20px;
+
+  background: #29223f;
+
+  color: #ffffff;
+
+  border-radius: 13px;
+
+  padding: 15px;
+
+  display: flex;
+
+  justify-content: space-between;
+}
+
+.analysis-highlight span {
+  display: block;
+
+  color: #aaa3b4;
+
+  font-size: 9px;
+
+  margin-bottom: 5px;
+}
+
+.analysis-highlight strong {
+  font-size: 12px;
+}
+
+/* =========================
+   ALL STUDENTS
+========================= */
+
+.all-students-modal {
+  width: min(650px, 100%);
+}
+
+.all-students-list {
+  margin-top: 18px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 7px;
+}
+
+.directory-row {
+  width: 100%;
+
+  border: 1px solid #ecebee;
+
+  background: #f7f7f8;
+
+  border-radius: 11px;
+
+  padding: 9px;
+
+  display: grid;
+
+  grid-template-columns: 38px 1fr auto;
+
+  gap: 10px;
+
+  align-items: center;
+
+  text-align: left;
+
+  color: #29223f;
+}
+
+.directory-row:hover {
+  border-color: #cfc6d8;
+}
+
+.directory-row img {
+  width: 38px;
+  height: 38px;
+
+  border-radius: 10px;
+
+  object-fit: cover;
+}
+
+.directory-row strong,
+.directory-row span {
+  display: block;
+}
+
+.directory-row strong {
+  font-size: 10px;
+}
+
+.directory-row span {
+  margin-top: 3px;
+
+  font-size: 8px;
+
+  color: #85808d;
+}
+
+.directory-cgpa {
+  text-align: right;
+}
+
+.directory-cgpa span {
+  margin: 0;
+}
+
+/* =========================
+   DELETE
+========================= */
+
+.delete-modal {
+  width: min(520px, 100%);
+}
+
+.delete-tabs {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 7px;
+
+  margin: 20px 0;
+}
+
+.delete-tabs button {
+  border: 1px solid #ddd9e4;
+
+  background: #ffffff;
+
+  color: #706979;
+
+  border-radius: 9px;
+
+  padding: 10px;
+
+  font-size: 9px;
+
+  font-weight: 600;
+}
+
+.delete-tabs button.active {
+  background: #29223f;
+
+  color: #ffffff;
+
+  border-color: #29223f;
+}
+
+.delete-form {
+  display: grid;
+
+  gap: 13px;
+}
+
+.delete-form label {
+  color: #5d5767;
+
+  font-size: 10px;
+
+  font-weight: 600;
+}
+
+.delete-form input,
+.delete-form select {
+  display: block;
+
+  width: 100%;
+
+  margin-top: 6px;
+
+  padding: 10px;
+
+  border: 1px solid #ddd9e4;
+
+  border-radius: 9px;
+
+  background: #faf9fb;
+
+  color: #29223f;
+
+  outline: none;
+
+  font-size: 10px;
+}
+
+.danger-button {
+  border: none;
+
+  border-radius: 9px;
+
+  background: #9b4e4e;
+
+  color: #ffffff;
+
+  padding: 11px;
+
+  font-size: 10px;
+
+  font-weight: 600;
+}
+
+/* =========================
+   ADD STUDENT
+========================= */
+
+.add-modal {
+  width: min(650px, 100%);
+}
+
+.upload-avatar {
+  width: 82px;
+  height: 82px;
+
+  border-radius: 50%;
+
+  background: #f5d84b;
+
+  color: #29223f;
+
+  display: grid;
+  place-items: center;
+
+  margin: 20px auto 7px;
+
+  cursor: pointer;
+
+  overflow: hidden;
+
+  border: 3px solid #fff2a8;
+}
+
+.upload-avatar span {
+  font-size: 30px;
+}
+
+.upload-avatar img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+.upload-avatar input {
+  display: none;
+}
+
+.upload-hint {
+  text-align: center;
+
+  color: #8a8591;
+
+  font-size: 10px;
+
+  margin-bottom: 20px;
+}
+
+.form-grid {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 12px;
+}
+
+.form-grid label {
+  color: #5d5767;
+
+  font-size: 10px;
+
+  font-weight: 600;
+}
+
+.form-grid input,
+.form-grid select {
+  display: block;
+
+  width: 100%;
+
+  margin-top: 6px;
+
+  padding: 10px 11px;
+
+  border: 1px solid #ddd9e4;
+
+  border-radius: 9px;
+
+  outline: none;
+
+  background: #faf9fb;
+
+  color: #29223f;
+
+  font-size: 11px;
+}
+
+.save-student-button {
+  width: 100%;
+
+  margin-top: 18px;
+
+  border: none;
+
+  border-radius: 10px;
+
+  background: #29223f;
+
+  color: #ffffff;
+
+  padding: 12px;
+
+  font-size: 12px;
+
+  font-weight: 600;
+}
+
+/* =========================
+   DARK MODE
+========================= */
+
+.dark-mode {
+  background: #17151d;
+
+  color: #f3f1f6;
+}
+
+.dark-mode .topbar,
+.dark-mode .sidebar,
+.dark-mode .welcome-section,
+.dark-mode .stat-card,
+.dark-mode .students-section,
+.dark-mode .semester-section,
+.dark-mode .profile-card,
+.dark-mode .side-card,
+.dark-mode .student-modal {
+  background: #211e29;
+
+  border-color: #322e3b;
+}
+
+.dark-mode .theme-toggle {
+  background: #292530;
+
+  border-color: #403a4b;
+
+  color: #f3f1f6;
+}
+
+.dark-mode .welcome-text,
+.dark-mode .dashboard-context,
+.dark-mode .student-heading p,
+.dark-mode .stat-card span,
+.dark-mode .detail-item span,
+.dark-mode .profile-card p,
+.dark-mode .footer,
+.dark-mode .upload-hint,
+.dark-mode .modal-department,
+.dark-mode .section-description {
+  color: #aaa4b5;
+}
+
+.dark-mode .student-card,
+.dark-mode .semester-grid div,
+.dark-mode .student-profile-grid div,
+.dark-mode .analytics-grid div,
+.dark-mode .performance-box,
+.dark-mode .guide-content > div,
+.dark-mode .directory-row {
+  background: #292530;
+
+  border-color: #393443;
+}
+
+.dark-mode .student-card-top {
+  border-color: #393443;
+}
+
+.dark-mode .sort-controls button,
+.dark-mode .search-box,
+.dark-mode .academic-selector-card select,
+.dark-mode .delete-tabs button,
+.dark-mode .delete-form input,
+.dark-mode .delete-form select {
+  background: #292530;
+
+  color: #c3bdcb;
+
+  border-color: #403a4b;
+}
+
+.dark-mode .search-box input {
+  color: #ffffff;
+}
+
+.dark-mode .sort-controls button.selected {
+  background: #f0d84f;
+
+  color: #28213b;
+
+  border-color: #f0d84f;
+}
+
+.dark-mode .cgpa-item strong {
+  color: #f0d84f;
+}
+
+.dark-mode .footer strong {
+  color: #d8d3df;
+}
+
+.dark-mode .close-button {
+  background: #332f3a;
+
+  color: #eeeaf2;
+}
+
+.dark-mode .form-grid label,
+.dark-mode .delete-form label {
+  color: #c0bac7;
+}
+
+.dark-mode .form-grid input,
+.dark-mode .form-grid select {
+  background: #292530;
+
+  color: #ffffff;
+
+  border-color: #403a4b;
+}
+
+.dark-mode .chart-track {
+  background: #3a3542;
+}
+
+.dark-mode .directory-row {
+  color: #ffffff;
+}
+
+.dark-mode .directory-row span {
+  color: #aaa4b5;
+}
+
+.dark-mode .student-record-scroll::-webkit-scrollbar-track {
+  background: #292530;
+}
+
+.dark-mode .student-record-scroll::-webkit-scrollbar-thumb {
+  background: #554d5f;
+}
+
+.dark-mode .summary-result {
+  background: #302b38;
+}
+
+.dark-mode .summary-result small {
+  color: #aaa4b5;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 1200px) {
+  .dashboard-layout {
+    grid-template-columns: 190px minmax(0, 1fr);
+  }
+
+  .sidebar {
+    width: 190px;
+  }
+
+  .right-panel {
+    display: none;
+  }
+}
+
+@media (max-width: 850px) {
+  .dashboard-layout {
+    width: calc(100% - 30px);
+
+    grid-template-columns: 1fr;
+
+    padding: 0;
+  }
+
+  .sidebar {
+    width: 100%;
+
+    height: auto;
+
+    position: static;
+  }
+
+  .navigation {
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .help-card {
+    margin-top: 15px;
+  }
+
   .student-list {
     grid-template-columns: 1fr;
   }
 
-  .student-card {
-    flex-direction: column;
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .context-strip {
+    grid-template-columns: 1fr;
+  }
+
+  .analytics-grid {
+    grid-template-columns: 1fr 1fr;
   }
 }
+
+@media (max-width: 650px) {
+  .topbar {
+    height: auto;
+
+    padding: 20px;
+
+    gap: 15px;
+  }
+
+  .topbar h1 {
+    font-size: 19px;
+  }
+
+  .welcome-section {
+    flex-direction: column;
+
+    align-items: flex-start;
+  }
+
+  .add-student-round {
+    align-self: flex-end;
+  }
+
+  .section-heading {
+    align-items: flex-start;
+
+    flex-direction: column;
+  }
+
+  .student-actions {
+    width: 100%;
+
+    flex-direction: column;
+
+    align-items: stretch;
+  }
+
+  .search-box {
+    width: 100%;
+  }
+
+  .navigation {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .semester-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .form-grid,
+  .student-profile-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .analytics-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .footer {
+    padding: 20px;
+
+    flex-direction: column;
+
+    gap: 10px;
+  }
+
+  .footer div {
+    flex-direction: column;
+  }
+
+  .footer span {
+    border-left: none;
+    padding-left: 0;
+  }
+}
+
+/* =========================================================
+   TIU DASHBOARD VISUAL UPDATE
+   ========================================================= */
+
+/* TIU RED ACCENT */
+
+.add-student-round {
+  background: var(--tiu-red);
+  color: #ffffff;
+}
+
+.help-icon {
+  background: var(--tiu-red);
+  color: #ffffff;
+}
+
+.help-link {
+  color: #ffb4b6;
+}
+
+.stat-icon.yellow {
+  background: var(--tiu-red-light);
+  color: var(--tiu-red-dark);
+}
+
+.quick-action-icon.yellow {
+  background: var(--tiu-red-light);
+  color: var(--tiu-red-dark);
+}
+
+.profile-avatar {
+  background: var(--tiu-red);
+  color: #ffffff;
+}
+
+.upload-avatar {
+  background: var(--tiu-red);
+  color: #ffffff;
+  border-color: #ffb9bb;
+}
+
+.dark-mode .sort-controls button.selected {
+  background: var(--tiu-red);
+  color: #ffffff;
+  border-color: var(--tiu-red);
+}
+
+.dark-mode .cgpa-item strong {
+  color: #ff6b6f;
+}
+
+
+/* UNIVERSITY IMAGE */
+
+.university-image-wrap {
+  margin-top: 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  max-width: 600px;
+}
+
+.university-image {
+  width: 92px;
+  height: 48px;
+  object-fit: cover;
+  border-radius: 9px;
+}
+
+.university-image-wrap span {
+  color: #777184;
+  font-size: 9px;
+}
+
+
+/* FIXED DASHBOARD COLUMNS */
+
+.dashboard-layout {
+  width: min(1500px, calc(100% - 48px));
+  margin: 24px auto;
+  display: grid;
+  grid-template-columns: 210px minmax(0, 1fr) 270px;
+  gap: 24px;
+  align-items: start;
+  min-width: 0;
+}
+
+.sidebar {
+  width: 210px;
+  min-width: 210px;
+  max-width: 210px;
+  box-sizing: border-box;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.right-panel {
+  width: 270px;
+  min-width: 270px;
+  max-width: 270px;
+  box-sizing: border-box;
+  flex-shrink: 0;
+  min-height: 0;
+}
+
+
+/* HEADER FIX */
+
+.topbar {
+  width: 100%;
+  min-width: 0;
+  min-height: 92px;
+  height: 92px;
+  box-sizing: border-box;
+  padding: 0 36px;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  border-bottom: 1px solid #e4e2e7;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  overflow: hidden;
+}
+
+.topbar > div {
+  min-width: 0;
+  flex: 1;
+}
+
+.topbar h1 {
+  font-size: 24px;
+  line-height: 1.2;
+  margin-top: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.topbar .eyebrow {
+  white-space: nowrap;
+}
+
+.theme-toggle {
+  flex: 0 0 auto;
+  border: 1px solid #ddd9e4;
+  background: #ffffff;
+  color: #28233d;
+  border-radius: 12px;
+  padding: 10px 16px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+
+/* MEDIUM SCREEN:
+   Keep all three columns instead of suddenly hiding
+   the right panel. */
+
+@media (min-width: 951px) and (max-width: 1200px) {
+  .dashboard-layout {
+    grid-template-columns: 210px minmax(0, 1fr) 270px;
+  }
+
+  .sidebar {
+    width: 210px;
+    min-width: 210px;
+    max-width: 210px;
+  }
+
+  .right-panel {
+    display: flex;
+    width: 270px;
+    min-width: 270px;
+    max-width: 270px;
+  }
+}
+
+
+/* SMALL SCREEN */
+
+@media (max-width: 950px) {
+  .dashboard-layout {
+    grid-template-columns: 190px minmax(0, 1fr);
+  }
+
+  .sidebar {
+    width: 190px;
+    min-width: 190px;
+    max-width: 190px;
+  }
+
+  .right-panel {
+    display: none;
+  }
+}
+
+
+/* DARK MODE */
+
+.dark-mode .topbar {
+  background: #171421;
+  border-color: #2d2838;
+}
+
+.dark-mode .theme-toggle {
+  background: #211c2d;
+  color: #f4f1f7;
+  border-color: #3a3348;
+}
+
+.dark-mode .university-image-wrap span {
+  color: #aaa3b5;
+}
+
+
+/* ============================================================
+   FINAL TIU DASHBOARD LAYOUT FIX
+   ============================================================ */
+
+/*
+   IMPORTANT:
+   The sidebar is a FIXED 210px grid track.
+   It is NOT allowed to grow.
+*/
+
+.dashboard-layout {
+  width: min(1500px, calc(100% - 48px)) !important;
+  margin: 24px auto !important;
+
+  display: grid !important;
+
+  grid-template-columns:
+    210px
+    minmax(0, 1fr)
+    270px !important;
+
+  gap: 24px !important;
+
+  align-items: start !important;
+
+  min-width: 0 !important;
+}
+
+
+/* LEFT SIDEBAR */
+
+.dashboard-layout > .sidebar {
+  width: 210px !important;
+  min-width: 210px !important;
+  max-width: 210px !important;
+
+  box-sizing: border-box !important;
+
+  flex: none !important;
+  flex-grow: 0 !important;
+  flex-shrink: 0 !important;
+
+  overflow: hidden !important;
+
+  position: sticky !important;
+  top: 116px !important;
+}
+
+
+/* CENTER COLUMN */
+
+.dashboard-layout > main,
+.dashboard-layout > .main-content,
+.dashboard-layout > .content-area {
+  min-width: 0 !important;
+  width: 100% !important;
+}
+
+
+/* RIGHT PANEL */
+
+.dashboard-layout > .right-panel {
+  width: 270px !important;
+  min-width: 270px !important;
+  max-width: 270px !important;
+
+  box-sizing: border-box !important;
+
+  flex: none !important;
+  flex-grow: 0 !important;
+  flex-shrink: 0 !important;
+
+  min-height: 0 !important;
+}
+
+
+/*
+   DO NOT let the sidebar width change simply because
+   the browser has been zoomed out.
+*/
+
+@media (min-width: 951px) {
+
+  .dashboard-layout {
+    grid-template-columns:
+      210px
+      minmax(0, 1fr)
+      270px !important;
+  }
+
+  .dashboard-layout > .sidebar {
+    width: 210px !important;
+    min-width: 210px !important;
+    max-width: 210px !important;
+  }
+
+  .dashboard-layout > .right-panel {
+    width: 270px !important;
+    min-width: 270px !important;
+    max-width: 270px !important;
+  }
+}
+
+
+/*
+   Only when the actual CSS viewport becomes narrow
+   do we reduce the sidebar.
+*/
+
+@media (max-width: 950px) {
+
+  .dashboard-layout {
+    grid-template-columns:
+      190px
+      minmax(0, 1fr) !important;
+  }
+
+  .dashboard-layout > .sidebar {
+    width: 190px !important;
+    min-width: 190px !important;
+    max-width: 190px !important;
+  }
+
+  .dashboard-layout > .right-panel {
+    display: none !important;
+  }
+}
+
+
+/* ============================================================
+   LARGE UNIVERSITY HERO
+   ============================================================ */
+
+.university-hero {
+  position: relative;
+
+  width: 100%;
+  height: 250px;
+
+  margin-top: 22px;
+
+  overflow: hidden;
+
+  border-radius: 18px;
+
+  background: #29223f;
+
+  box-shadow:
+    0 12px 30px rgba(41, 34, 63, 0.14);
+}
+
+.university-hero-image {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+
+  object-position: center 45%;
+
+  transition: transform 0.35s ease;
+}
+
+.university-hero:hover .university-hero-image {
+  transform: scale(1.02);
+}
+
+.university-hero::after {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(24, 18, 38, 0.82) 0%,
+      rgba(24, 18, 38, 0.45) 45%,
+      rgba(24, 18, 38, 0.08) 100%
+    );
+
+  pointer-events: none;
+}
+
+.university-hero-overlay {
+  position: absolute;
+
+  left: 24px;
+  bottom: 22px;
+
+  z-index: 2;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 4px;
+
+  color: #ffffff;
+
+  max-width: 70%;
+}
+
+.university-hero-overlay span {
+  font-size: 10px;
+
+  font-weight: 800;
+
+  letter-spacing: 1.6px;
+
+  color: #ffb4b6;
+}
+
+.university-hero-overlay strong {
+  font-size: 22px;
+
+  line-height: 1.15;
+
+  color: #ffffff;
+}
+
+.university-hero-overlay small {
+  margin-top: 3px;
+
+  font-size: 11px;
+
+  color: rgba(255, 255, 255, 0.82);
+}
+
+
+/* ============================================================
+   FIX MODAL / CARD CORNERS
+   ============================================================ */
+
+/*
+   Every major modal gets a proper rounded outer shell.
+   The scrollbar stays inside the shell.
+*/
+
+.modal-overlay > div,
+.modal-content,
+.add-student-modal,
+.student-modal,
+.directory-modal,
+.help-modal,
+.analysis-modal {
+  border-radius: 24px !important;
+
+  overflow: hidden !important;
+
+  box-sizing: border-box !important;
+}
+
+
+/*
+   Inner scroll area gets the scrolling,
+   NOT the rounded outer shell itself.
+*/
+
+.modal-content,
+.add-student-modal,
+.student-modal,
+.directory-modal,
+.help-modal,
+.analysis-modal {
+  scrollbar-width: thin;
+}
+
+
+/*
+   Make sure the bottom corners cannot be visually
+   destroyed by the scrolling content.
+*/
+
+.modal-content > *,
+.add-student-modal > *,
+.student-modal > *,
+.directory-modal > *,
+.help-modal > *,
+.analysis-modal > * {
+  box-sizing: border-box;
+}
+
+
+/* ============================================================
+   ADD STUDENT MODAL
+   ============================================================ */
+
+.add-student-modal {
+  border-radius: 24px !important;
+
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+
+  scrollbar-gutter: stable;
+}
+
+
+/* ============================================================
+   ALL STUDENTS
+   ============================================================ */
+
+.directory-modal {
+  border-radius: 24px !important;
+
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+
+  scrollbar-gutter: stable;
+}
+
+
+/* ============================================================
+   USER GUIDE
+   ============================================================ */
+
+.help-modal {
+  border-radius: 24px !important;
+
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+
+  scrollbar-gutter: stable;
+}
+
+
+/* ============================================================
+   ACADEMIC / OTHER MODALS
+   ============================================================ */
+
+.analysis-modal,
+.student-modal {
+  border-radius: 24px !important;
+
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+
+  scrollbar-gutter: stable;
+}
+
+
+/* ============================================================
+   DASHBOARD INTRODUCTION
+   ============================================================ */
+
+.dashboard-introduction {
+  min-width: 0;
+}
+
+.dashboard-introduction .dashboard-context {
+  max-width: 900px;
+}
+
+
+/* ============================================================
+   MOBILE HERO
+   ============================================================ */
+
+@media (max-width: 700px) {
+
+  .university-hero {
+    height: 210px;
+  }
+
+  .university-hero-overlay {
+    left: 18px;
+    bottom: 18px;
+    max-width: 85%;
+  }
+
+  .university-hero-overlay strong {
+    font-size: 18px;
+  }
+}
+
+
+/* ============================================================
+   DARK MODE HERO
+   ============================================================ */
+
+.dark-mode .university-hero {
+  box-shadow:
+    0 12px 30px rgba(0, 0, 0, 0.35);
+}
+
+
+/* Dashboard floating Add Student button is intentionally removed */
+.welcome-section .add-student-round {
+  display: none !important;
+}
+
+
+/* ============================================================
+   DEFINITIVE SIDEBAR / DASHBOARD GRID FIX
+   ============================================================ */
+
+/*
+   The important change is that the GRID TRACK itself is fixed.
+   The sidebar is no longer responsible for determining its
+   own column width.
+
+   LEFT  = 210px fixed
+   CENTER = flexible
+   RIGHT = 270px fixed
+*/
+
+.dashboard-layout {
+  display: grid !important;
+
+  grid-template-columns:
+    210px
+    minmax(0, 1fr)
+    270px !important;
+
+  column-gap: 24px !important;
+
+  width: calc(100% - 48px) !important;
+  max-width: 1500px !important;
+
+  margin-left: auto !important;
+  margin-right: auto !important;
+
+  min-width: 0 !important;
+}
+
+
+/*
+   The sidebar MUST occupy exactly the first grid track.
+*/
+
+.dashboard-layout > .sidebar {
+  grid-column: 1 !important;
+
+  width: auto !important;
+  min-width: 0 !important;
+  max-width: none !important;
+
+  box-sizing: border-box !important;
+
+  margin: 0 !important;
+
+  justify-self: stretch !important;
+  align-self: start !important;
+
+  flex: none !important;
+}
+
+
+/*
+   The main content MUST occupy the flexible middle track.
+*/
+
+.dashboard-layout > main {
+  grid-column: 2 !important;
+
+  width: auto !important;
+  min-width: 0 !important;
+  max-width: none !important;
+
+  margin: 0 !important;
+}
+
+
+/*
+   If the main wrapper uses a class instead of <main>,
+   these rules ensure it remains in the center.
+*/
+
+.dashboard-layout > .main-content,
+.dashboard-layout > .content-area {
+  grid-column: 2 !important;
+
+  width: auto !important;
+  min-width: 0 !important;
+  max-width: none !important;
+}
+
+
+/*
+   RIGHT PANEL MUST OCCUPY THE THIRD FIXED TRACK.
+*/
+
+.dashboard-layout > .right-panel {
+  grid-column: 3 !important;
+
+  width: auto !important;
+  min-width: 0 !important;
+  max-width: none !important;
+
+  margin: 0 !important;
+
+  justify-self: stretch !important;
+
+  flex: none !important;
+}
+
+
+/*
+   This prevents old width rules from creating a nested
+   expanding/flexing sidebar.
+*/
+
+.dashboard-layout .sidebar {
+  flex-basis: auto !important;
+  flex-grow: 0 !important;
+  flex-shrink: 0 !important;
+}
+
+
+/*
+   At genuinely narrow viewport sizes, collapse the right
+   panel. This is based on the actual viewport, not a sidebar
+   width calculation.
+*/
+
+@media (max-width: 950px) {
+
+  .dashboard-layout {
+    grid-template-columns:
+      190px
+      minmax(0, 1fr) !important;
+  }
+
+  .dashboard-layout > .sidebar {
+    grid-column: 1 !important;
+  }
+
+  .dashboard-layout > main,
+  .dashboard-layout > .main-content,
+  .dashboard-layout > .content-area {
+    grid-column: 2 !important;
+  }
+
+  .dashboard-layout > .right-panel {
+    display: none !important;
+  }
+}
+
+
+/* ============================================================
+   NEED HELP — MOVE LOWER
+   ============================================================ */
+
+.sidebar .help-card,
+.sidebar .help-box,
+.sidebar .help-section {
+  margin-top: 48px !important;
+}
+
+
+/*
+   If the help card is the final direct child of the sidebar,
+   this gives it a little more breathing room from Semester.
+*/
+
+.sidebar > :last-child {
+  margin-top: 48px !important;
+}
+
+
+/* ============================================================
+   UNIVERSITY HERO
+   ============================================================ */
+
+.university-hero {
+  position: relative;
+
+  width: 100%;
+  height: 290px;
+
+  margin-top: 24px;
+
+  overflow: hidden;
+
+  border-radius: 20px;
+
+  background: #29223f;
+
+  box-shadow:
+    0 14px 34px rgba(41, 34, 63, 0.16);
+}
+
+.university-hero-image {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  object-position: center;
+
+  filter: saturate(0.95);
+}
+
+
+/*
+   Dark overlay so the branding remains readable.
+*/
+
+.university-hero::after {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(25, 19, 40, 0.84) 0%,
+      rgba(25, 19, 40, 0.58) 38%,
+      rgba(25, 19, 40, 0.16) 78%,
+      rgba(25, 19, 40, 0.04) 100%
+    );
+
+  pointer-events: none;
+}
+
+
+/* ============================================================
+   TIU BRANDING ON THE HERO
+   ============================================================ */
+
+.university-brand-panel {
+  position: absolute;
+
+  z-index: 3;
+
+  left: 28px;
+  top: 26px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 13px;
+
+  padding: 11px 15px;
+
+  border-radius: 13px;
+
+  background: rgba(255, 255, 255, 0.96);
+
+  box-shadow:
+    0 8px 22px rgba(0, 0, 0, 0.18);
+}
+
+.university-logo {
+  width: 48px;
+  height: 48px;
+
+  object-fit: contain;
+
+  flex: 0 0 auto;
+}
+
+.university-brand-panel div {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 3px;
+}
+
+.university-brand-panel span {
+  font-size: 13px;
+
+  font-weight: 800;
+
+  letter-spacing: 0.5px;
+
+  color: #29223f;
+}
+
+.university-brand-panel strong {
+  font-size: 9px;
+
+  letter-spacing: 1.4px;
+
+  color: #e52b2f;
+}
+
+
+/* ============================================================
+   HERO LOCATION / SHOWCASE TEXT
+   ============================================================ */
+
+.university-hero-location {
+  position: absolute;
+
+  z-index: 3;
+
+  left: 28px;
+  bottom: 26px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 3px;
+
+  color: #ffffff;
+}
+
+.university-hero-location span {
+  font-size: 11px;
+
+  font-weight: 700;
+
+  letter-spacing: 1.3px;
+
+  color: #ffb4b6;
+
+  text-transform: uppercase;
+}
+
+.university-hero-location strong {
+  font-size: 26px;
+
+  line-height: 1.15;
+
+  color: #ffffff;
+}
+
+
+/* ============================================================
+   DASHBOARD DESCRIPTION
+   ============================================================ */
+
+.dashboard-context {
+  max-width: 900px !important;
+
+  line-height: 1.55 !important;
+}
+
+
+/* ============================================================
+   DARK MODE HERO
+   ============================================================ */
+
+.dark-mode .university-brand-panel {
+  background: rgba(255, 255, 255, 0.97);
+}
+
+
+/* ============================================================
+   RESPONSIVE HERO
+   ============================================================ */
+
+@media (max-width: 700px) {
+
+  .university-hero {
+    height: 230px;
+  }
+
+  .university-brand-panel {
+    left: 16px;
+    top: 16px;
+
+    padding: 8px 11px;
+  }
+
+  .university-logo {
+    width: 38px;
+    height: 38px;
+  }
+
+  .university-brand-panel span {
+    font-size: 10px;
+  }
+
+  .university-hero-location {
+    left: 18px;
+    bottom: 18px;
+  }
+
+  .university-hero-location strong {
+    font-size: 20px;
+  }
+}
+
+
+/* ============================================================
+   MODAL CORNER FIX
+   ============================================================ */
+
+.modal-overlay > div,
+.modal-content,
+.add-student-modal,
+.student-modal,
+.directory-modal,
+.help-modal,
+.analysis-modal {
+  border-radius: 24px !important;
+
+  overflow: hidden !important;
+
+  box-sizing: border-box !important;
+}
+
+
+/*
+   Keep the scroll inside the modal while preserving the
+   rounded outer shell.
+*/
+
+.add-student-modal,
+.directory-modal,
+.help-modal,
+.analysis-modal,
+.student-modal {
+  scrollbar-gutter: stable;
+}
+
+
+/*
+   Rounded clipping for modal content.
+*/
+
+.add-student-modal::before,
+.directory-modal::before,
+.help-modal::before,
+.analysis-modal::before,
+.student-modal::before {
+  border-radius: inherit;
+}
+
+
+/* ============================================================
+   DEFINITIVE DASHBOARD FIX
+   ============================================================ */
+
+
+/* ------------------------------------------------------------
+   1. THE ACTUAL SIDEBAR BUG FIX
+   ------------------------------------------------------------
+
+   NEVER use 100vh here.
+
+   Browser zoom changes the CSS viewport, which was causing
+   the sidebar to become extremely tall.
+
+   The sidebar now sizes ONLY to its contents.
+   ------------------------------------------------------------ */
+
+.dashboard-layout > .sidebar {
+  grid-column: 1 !important;
+
+  width: 210px !important;
+  min-width: 210px !important;
+  max-width: 210px !important;
+
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+
+  align-self: start !important;
+  justify-self: start !important;
+
+  box-sizing: border-box !important;
+
+  flex: none !important;
+  flex-grow: 0 !important;
+  flex-shrink: 0 !important;
+
+  overflow: hidden !important;
+
+  position: sticky !important;
+  top: 116px !important;
+}
+
+
+/*
+   IMPORTANT:
+   Override any old height rule specifically.
+*/
+
+.sidebar {
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+
+  align-self: start !important;
+}
+
+
+/* ------------------------------------------------------------
+   2. GRID TRACKS
+   ------------------------------------------------------------ */
+
+.dashboard-layout {
+  display: grid !important;
+
+  grid-template-columns:
+    210px
+    minmax(0, 1fr)
+    270px !important;
+
+  gap: 24px !important;
+
+  align-items: start !important;
+
+  width: calc(100% - 48px) !important;
+  max-width: 1500px !important;
+
+  margin-left: auto !important;
+  margin-right: auto !important;
+
+  min-width: 0 !important;
+}
+
+
+/*
+   Only the center is flexible.
+*/
+
+.dashboard-layout > main,
+.dashboard-layout > .main-content,
+.dashboard-layout > .content-area {
+  grid-column: 2 !important;
+
+  width: 100% !important;
+  min-width: 0 !important;
+  max-width: none !important;
+
+  align-self: start !important;
+}
+
+
+/*
+   Right panel.
+*/
+
+.dashboard-layout > .right-panel {
+  grid-column: 3 !important;
+
+  width: 270px !important;
+  min-width: 270px !important;
+  max-width: 270px !important;
+
+  align-self: start !important;
+
+  flex: none !important;
+}
+
+
+/* ------------------------------------------------------------
+   3. REMOVE THE OLD FLOATING ADD BUTTON
+   ------------------------------------------------------------ */
+
+.welcome-section .add-student-round {
+  display: none !important;
+}
+
+
+/* ------------------------------------------------------------
+   4. USE THE WHOLE WELCOME CARD
+   ------------------------------------------------------------ */
+
+.welcome-section {
+  display: block !important;
+
+  width: 100% !important;
+  min-width: 0 !important;
+
+  box-sizing: border-box !important;
+}
+
+.dashboard-introduction {
+  width: 100% !important;
+  max-width: none !important;
+
+  min-width: 0 !important;
+
+  box-sizing: border-box !important;
+}
+
+
+/* ------------------------------------------------------------
+   5. LARGE TIU HERO
+   ------------------------------------------------------------ */
+
+.university-hero {
+  position: relative !important;
+
+  width: 100% !important;
+  height: 310px !important;
+
+  margin-top: 24px !important;
+
+  overflow: hidden !important;
+
+  border-radius: 20px !important;
+
+  background: #29223f;
+
+  box-shadow:
+    0 14px 34px rgba(41, 34, 63, 0.15);
+
+  box-sizing: border-box !important;
+}
+
+
+/*
+   The official c1.jpg already contains:
+   - TIU logo
+   - TECHNO INDIA UNIVERSITY sign
+   - entrance lobby
+   - reception
+   - hallway
+
+   Therefore NO additional logo is placed over it.
+*/
+
+.university-hero-image {
+  display: block !important;
+
+  width: 100% !important;
+  height: 100% !important;
+
+  object-fit: cover !important;
+
+  /*
+     Keep the entire important sign/hallway visible.
+  */
+  object-position: center center !important;
+
+  filter: none !important;
+}
+
+
+/*
+   Very subtle dark gradient only at the bottom.
+   It does NOT cover the university sign.
+*/
+
+.university-hero::after {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  height: 38%;
+
+  background:
+    linear-gradient(
+      to top,
+      rgba(25, 19, 40, 0.78),
+      rgba(25, 19, 40, 0)
+    );
+
+  pointer-events: none;
+}
+
+
+/* ------------------------------------------------------------
+   6. SIMPLE HERO CAPTION
+   ------------------------------------------------------------ */
+
+.university-hero-caption {
+  position: absolute;
+
+  z-index: 2;
+
+  left: 26px;
+  bottom: 22px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 3px;
+
+  color: #ffffff;
+}
+
+.university-hero-caption span {
+  font-size: 10px;
+
+  font-weight: 800;
+
+  letter-spacing: 1.4px;
+
+  color: #ffb4b6;
+}
+
+.university-hero-caption strong {
+  font-size: 23px;
+
+  line-height: 1.1;
+
+  color: #ffffff;
+}
+
+
+/* ------------------------------------------------------------
+   7. REMOVE THE OLD FAKE LOGO PANEL
+   ------------------------------------------------------------ */
+
+.university-brand-panel {
+  display: none !important;
+}
+
+.university-logo {
+  display: none !important;
+}
+
+.university-hero-location {
+  display: none !important;
+}
+
+
+/* ------------------------------------------------------------
+   8. HELP CARD — LOWER FOR SYMMETRY
+   ------------------------------------------------------------ */
+
+.sidebar .help-card {
+  margin-top: 52px !important;
+}
+
+
+/*
+   Do NOT apply this to arbitrary last children.
+   Only the actual help card moves.
+*/
+
+
+/* ------------------------------------------------------------
+   9. MODAL CORNERS
+   ------------------------------------------------------------ */
+
+.add-student-modal,
+.directory-modal,
+.help-modal,
+.analysis-modal,
+.student-modal {
+  border-radius: 24px !important;
+
+  overflow: hidden !important;
+
+  box-sizing: border-box !important;
+}
+
+
+/* ------------------------------------------------------------
+   10. RESPONSIVE
+   ------------------------------------------------------------ */
+
+@media (max-width: 950px) {
+
+  .dashboard-layout {
+    grid-template-columns:
+      190px
+      minmax(0, 1fr) !important;
+  }
+
+  .dashboard-layout > .sidebar {
+    grid-column: 1 !important;
+
+    width: 190px !important;
+    min-width: 190px !important;
+    max-width: 190px !important;
+
+    height: auto !important;
+  }
+
+  .dashboard-layout > main,
+  .dashboard-layout > .main-content,
+  .dashboard-layout > .content-area {
+    grid-column: 2 !important;
+  }
+
+  .dashboard-layout > .right-panel {
+    display: none !important;
+  }
+}
+
+
+@media (max-width: 700px) {
+
+  .university-hero {
+    height: 240px !important;
+  }
+
+  .university-hero-caption {
+    left: 18px;
+    bottom: 18px;
+  }
+
+  .university-hero-caption strong {
+    font-size: 19px;
+  }
+}
+
+/* ============================================================
+   FINAL DASHBOARD LAYOUT
+   ============================================================ */
+
+/* Keep the left column independent from the center column. */
+.dashboard-layout > .sidebar,
+.dashboard-layout .sidebar {
+  height: fit-content !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  align-self: start !important;
+  justify-self: start !important;
+  background: transparent !important;
+  padding: 0 !important;
+  overflow: visible !important;
+}
+
+/* The left sidebar is a stack of independent cards. */
+.sidebar {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 18px !important;
+}
+
+/* TIU identity card moved from the right panel. */
+.sidebar-profile-card {
+  width: 100% !important;
+  min-height: 0 !important;
+  box-sizing: border-box !important;
+  margin: 0 !important;
+  padding: 22px 18px !important;
+  border-radius: 20px !important;
+  background: #ffffff !important;
+  border: 1px solid rgba(40, 30, 65, 0.06) !important;
+  box-shadow: none !important;
+  text-align: center !important;
+}
+
+.sidebar-profile-card .profile-avatar {
+  width: 62px !important;
+  height: 62px !important;
+  margin: 0 auto 14px !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.sidebar-profile-card h3 {
+  margin: 0 0 5px !important;
+  font-size: 15px !important;
+}
+
+.sidebar-profile-card p {
+  margin: 0 !important;
+  font-size: 11px !important;
+}
+
+/* Navigation is its own clean section. */
+.sidebar .navigation {
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 2px 0 !important;
+}
+
+/* Need Help is an independent card, lower down. */
+.sidebar .help-card {
+  width: 100% !important;
+  box-sizing: border-box !important;
+  margin: 34px 0 0 !important;
+  border-radius: 20px !important;
+}
+
+/* Do not reserve space for the removed floating add button. */
+.welcome-section .add-student-round {
+  display: none !important;
+}
+
+/* The hero itself uses the photograph with no artificial overlay. */
+.university-hero {
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+.university-hero-caption {
+  display: none !important;
+}
+
+/* Keep the image clean and prominent. */
+.university-hero-image {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+}
+
+/* Right column now starts directly with Academic Summary. */
+.right-panel {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 18px !important;
+}
+
+.right-panel .academic-selector-card,
+.right-panel .quick-access-card {
+  margin-top: 0 !important;
+}
+
+/* Keep dashboard columns aligned at the top. */
+.dashboard-layout {
+  align-items: start !important;
+}
+
+
+/* ============================================================
+   FINAL VISUAL POLISH
+   ============================================================ */
+
+/* ------------------------------------------------------------
+   1. REMOVE EVERY HERO OVERLAY
+   The photograph already contains the TIU branding.
+   ------------------------------------------------------------ */
+
+.university-hero::before,
+.university-hero::after,
+.university-hero-image::before,
+.university-hero-image::after {
+  content: none !important;
+  display: none !important;
+  background: none !important;
+  opacity: 0 !important;
+}
+
+.university-hero {
+  isolation: auto !important;
+  background: transparent !important;
+}
+
+.university-hero-image {
+  position: relative !important;
+  z-index: 1 !important;
+  filter: none !important;
+  opacity: 1 !important;
+}
+
+/* Make absolutely sure the removed caption cannot create
+   another visual layer. */
+.university-hero-caption {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+}
+
+/* ------------------------------------------------------------
+   2. RIGHT PANEL — CLEAN SYMMETRICAL STACK
+   ------------------------------------------------------------ */
+
+.right-panel {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 18px !important;
+  align-self: stretch !important;
+  min-height: 0 !important;
+}
+
+/* Academic Summary occupies the upper portion. */
+.right-panel .academic-selector-card {
+  flex: 0 0 auto !important;
+  margin: 0 !important;
+}
+
+/* Quick Access fills the remaining vertical space. */
+.right-panel .quick-access-card {
+  flex: 1 1 auto !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+}
+
+/* Remove accidental bottom spacing that can make the two
+   right-side cards terminate unevenly. */
+.right-panel > *:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* ------------------------------------------------------------
+   3. LEFT SIDEBAR — SAME VISUAL RHYTHM
+   ------------------------------------------------------------ */
+
+.sidebar {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 18px !important;
+  align-self: start !important;
+  height: fit-content !important;
+  min-height: 0 !important;
+}
+
+/* Keep the TIU identity card compact. */
+.sidebar-profile-card {
+  flex: 0 0 auto !important;
+}
+
+/* Navigation should not inherit card-height behaviour. */
+.sidebar .navigation {
+  flex: 0 0 auto !important;
+}
+
+/* Help is deliberately separated from navigation. */
+.sidebar .help-card {
+  flex: 0 0 auto !important;
+  margin-top: 34px !important;
+}
+
+/* ------------------------------------------------------------
+   4. LIGHT MODE CARD FINISH
+   ------------------------------------------------------------ */
+
+.sidebar-profile-card {
+  background: #ffffff !important;
+  color: #171329 !important;
+}
+
+.sidebar-profile-card h3 {
+  color: #171329 !important;
+}
+
+.sidebar-profile-card p {
+  color: #827d91 !important;
+}
+
+/* ------------------------------------------------------------
+   5. DARK MODE
+   ------------------------------------------------------------ */
+
+/* Support both common dark-mode implementations used by the app. */
+body.dark-mode .sidebar-profile-card,
+.dark-mode .sidebar-profile-card,
+[data-theme="dark"] .sidebar-profile-card {
+  background: #211d2b !important;
+  border-color: rgba(255, 255, 255, 0.06) !important;
+  color: #ffffff !important;
+}
+
+body.dark-mode .sidebar-profile-card h3,
+.dark-mode .sidebar-profile-card h3,
+[data-theme="dark"] .sidebar-profile-card h3 {
+  color: #ffffff !important;
+}
+
+body.dark-mode .sidebar-profile-card p,
+.dark-mode .sidebar-profile-card p,
+[data-theme="dark"] .sidebar-profile-card p {
+  color: #aaa4b7 !important;
+}
+
+/* Quick Access dark-mode text was becoming almost invisible. */
+body.dark-mode .quick-access-card,
+.dark-mode .quick-access-card,
+[data-theme="dark"] .quick-access-card {
+  background: #211d2b !important;
+  color: #ffffff !important;
+}
+
+body.dark-mode .quick-access-card h3,
+.dark-mode .quick-access-card h3,
+[data-theme="dark"] .quick-access-card h3 {
+  color: #ffffff !important;
+}
+
+body.dark-mode .quick-access-card h4,
+body.dark-mode .quick-access-card strong,
+.dark-mode .quick-access-card h4,
+.dark-mode .quick-access-card strong,
+[data-theme="dark"] .quick-access-card h4,
+[data-theme="dark"] .quick-access-card strong {
+  color: #f4f1f8 !important;
+}
+
+body.dark-mode .quick-access-card p,
+.dark-mode .quick-access-card p,
+[data-theme="dark"] .quick-access-card p {
+  color: #aaa4b7 !important;
+}
+
+body.dark-mode .quick-access-card span,
+.dark-mode .quick-access-card span,
+[data-theme="dark"] .quick-access-card span {
+  color: #b8b2c4 !important;
+}
+
+/* Arrows in Quick Access should remain visible. */
+body.dark-mode .quick-access-card .quick-access-arrow,
+body.dark-mode .quick-access-card .arrow,
+.dark-mode .quick-access-card .quick-access-arrow,
+.dark-mode .quick-access-card .arrow,
+[data-theme="dark"] .quick-access-card .quick-access-arrow,
+[data-theme="dark"] .quick-access-card .arrow {
+  color: #aaa4b7 !important;
+}
+
+/* ------------------------------------------------------------
+   6. DARK MODE — ACADEMIC SUMMARY
+   ------------------------------------------------------------ */
+
+body.dark-mode .academic-selector-card,
+.dark-mode .academic-selector-card,
+[data-theme="dark"] .academic-selector-card {
+  background: #211d2b !important;
+  color: #ffffff !important;
+}
+
+body.dark-mode .academic-selector-card h3,
+.dark-mode .academic-selector-card h3,
+[data-theme="dark"] .academic-selector-card h3 {
+  color: #ffffff !important;
+}
+
+body.dark-mode .academic-selector-card label,
+.dark-mode .academic-selector-card label,
+[data-theme="dark"] .academic-selector-card label {
+  color: #aaa4b7 !important;
+}
+
+body.dark-mode .academic-selector-card select,
+.dark-mode .academic-selector-card select,
+[data-theme="dark"] .academic-selector-card select {
+  background: #282333 !important;
+  color: #f4f1f8 !important;
+  border-color: rgba(255, 255, 255, 0.12) !important;
+}
+
+/* ------------------------------------------------------------
+   7. PREVENT THE SIDEBAR FROM EVER STRETCHING WITH CONTENT
+   ------------------------------------------------------------ */
+
+.dashboard-layout > .sidebar {
+  height: fit-content !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  align-self: start !important;
+}
+
+/* The center records area remains the only independently
+   scrollable student-records region. */
+.student-records,
+.student-list-container,
+.student-list-scroll,
+.records-list {
+  scrollbar-gutter: stable !important;
+}
+
+/* ============================================================
+   CLEAN SIDE CARD COMPOSITION
+   ============================================================ */
+
+/*
+   The left and right columns are independent stacks.
+   Nothing is stretched to the height of the centre content.
+*/
+
+.dashboard-layout > .sidebar,
+.dashboard-layout > .right-panel {
+  align-self: start !important;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  box-sizing: border-box !important;
+}
+
+/* ------------------------------------------------------------
+   LEFT
+   ------------------------------------------------------------ */
+
+.dashboard-layout > .sidebar {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 18px !important;
+}
+
+.sidebar-profile-card {
+  flex: 0 0 auto !important;
+  height: auto !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+}
+
+.sidebar .navigation {
+  flex: 0 0 auto !important;
+  height: auto !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+}
+
+.sidebar .help-card {
+  flex: 0 0 auto !important;
+  height: 190px !important;
+  min-height: 190px !important;
+  max-height: 190px !important;
+  margin: 18px 0 0 !important;
+  box-sizing: border-box !important;
+}
+
+/* ------------------------------------------------------------
+   RIGHT
+   ------------------------------------------------------------ */
+
+.dashboard-layout > .right-panel {
+  display: grid !important;
+
+  /*
+     Academic Summary and Quick Access form one deliberate
+     compact stack rather than being stretched independently.
+  */
+  grid-template-rows: 322px 300px !important;
+
+  gap: 18px !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Academic Summary */
+.dashboard-layout > .right-panel .academic-selector-card {
+  height: 322px !important;
+  min-height: 322px !important;
+  max-height: 322px !important;
+
+  margin: 0 !important;
+  box-sizing: border-box !important;
+  overflow: hidden !important;
+}
+
+/* Quick Access */
+.dashboard-layout > .right-panel .quick-access-card {
+  height: 300px !important;
+  min-height: 300px !important;
+  max-height: 300px !important;
+
+  margin: 0 !important;
+  box-sizing: border-box !important;
+  overflow: hidden !important;
+
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+/*
+   Quick Access heading takes only its natural height.
+   The feature list gets EVERYTHING underneath it.
+*/
+.dashboard-layout > .right-panel .quick-access-card > .side-card-header {
+  flex: 0 0 auto !important;
+}
+
+/*
+   Five features divide the remaining card space equally.
+*/
+.dashboard-layout > .right-panel .quick-access-card > div:last-child {
+  flex: 1 1 0 !important;
+  min-height: 0 !important;
+
+  display: grid !important;
+  grid-template-rows: repeat(5, minmax(0, 1fr)) !important;
+}
+
+/*
+   Every feature row has equal height.
+*/
+.dashboard-layout > .right-panel .quick-access-card > div:last-child > * {
+  min-height: 0 !important;
+  height: auto !important;
+
+  margin: 0 !important;
+  box-sizing: border-box !important;
+
+  display: flex !important;
+  align-items: center !important;
+}
+
+/*
+   No hidden margin between rows.
+*/
+.dashboard-layout > .right-panel .quick-access-card > div:last-child > * + * {
+  margin-top: 0 !important;
+}
+
+/*
+   Last feature gets no unnecessary bottom divider.
+*/
+.dashboard-layout > .right-panel .quick-access-card > div:last-child > *:last-child {
+  border-bottom: none !important;
+}
+
+/* ------------------------------------------------------------
+   DARK MODE
+   ------------------------------------------------------------ */
+
+body.dark-mode .sidebar-profile-card,
+.dark-mode .sidebar-profile-card,
+[data-theme="dark"] .sidebar-profile-card {
+  background: #211d2b !important;
+  color: #ffffff !important;
+}
+
+body.dark-mode .sidebar-profile-card h3,
+.dark-mode .sidebar-profile-card h3,
+[data-theme="dark"] .sidebar-profile-card h3 {
+  color: #ffffff !important;
+}
+
+body.dark-mode .sidebar-profile-card p,
+.dark-mode .sidebar-profile-card p,
+[data-theme="dark"] .sidebar-profile-card p {
+  color: #aaa4b7 !important;
+}
+
+body.dark-mode .quick-access-card,
+.dark-mode .quick-access-card,
+[data-theme="dark"] .quick-access-card {
+  background: #211d2b !important;
+  color: #ffffff !important;
+}
+
+body.dark-mode .quick-access-card h3,
+.dark-mode .quick-access-card h3,
+[data-theme="dark"] .quick-access-card h3 {
+  color: #ffffff !important;
+}
+
+body.dark-mode .quick-access-card h4,
+body.dark-mode .quick-access-card strong,
+.dark-mode .quick-access-card h4,
+.dark-mode .quick-access-card strong,
+[data-theme="dark"] .quick-access-card h4,
+[data-theme="dark"] .quick-access-card strong {
+  color: #f4f1f8 !important;
+}
+
+body.dark-mode .quick-access-card p,
+.dark-mode .quick-access-card p,
+[data-theme="dark"] .quick-access-card p {
+  color: #aaa4b7 !important;
+}
+
+/* ------------------------------------------------------------
+   HERO — PHOTOGRAPH ONLY
+   ------------------------------------------------------------ */
+
+.university-hero::before,
+.university-hero::after {
+  content: none !important;
+  display: none !important;
+  background: none !important;
+  opacity: 0 !important;
+}
+
+.university-hero-caption {
+  display: none !important;
+}
+
+.university-hero-image {
+  opacity: 1 !important;
+  filter: none !important;
+}
+
+/* ============================================================
+   RESPONSIVE SIDE-COLUMN SYSTEM
+   The right column follows the REAL height of the left column.
+   No hard-coded total heights.
+   ============================================================ */
+
+/* ------------------------------------------------------------
+   LEFT SIDEBAR
+   ------------------------------------------------------------ */
+
+.dashboard-layout > .sidebar {
+  align-self: start !important;
+
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+
+  box-sizing: border-box !important;
+
+  display: flex !important;
+  flex-direction: column !important;
+
+  gap: 18px !important;
+}
+
+/* TIU identity card */
+.dashboard-layout > .sidebar .sidebar-profile-card {
+  flex: 0 0 auto !important;
+
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+
+  margin: 0 !important;
+}
+
+/* Navigation */
+.dashboard-layout > .sidebar .navigation {
+  flex: 0 0 auto !important;
+
+  height: auto !important;
+  min-height: 0 !important;
+
+  margin: 0 !important;
+}
+
+/*
+   Help card stays at its natural designed size.
+   It is NOT stretched to fill the sidebar.
+*/
+.dashboard-layout > .sidebar .help-card {
+  flex: 0 0 auto !important;
+
+  height: 190px !important;
+  min-height: 190px !important;
+  max-height: 190px !important;
+
+  margin: 0 !important;
+
+  box-sizing: border-box !important;
+}
+
+/* ------------------------------------------------------------
+   RIGHT PANEL
+   ------------------------------------------------------------ */
+
+/*
+   This is the important part.
+
+   JavaScript measures the actual left sidebar and writes:
+
+       --matched-side-height: <real height>px
+
+   The right panel uses that exact measurement.
+*/
+.dashboard-layout > .right-panel {
+  align-self: start !important;
+
+  height: var(--matched-side-height, auto) !important;
+  min-height: 0 !important;
+  max-height: none !important;
+
+  box-sizing: border-box !important;
+
+  display: flex !important;
+  flex-direction: column !important;
+
+  gap: 18px !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* ------------------------------------------------------------
+   ACADEMIC SUMMARY
+   ------------------------------------------------------------ */
+
+/*
+   IMPORTANT:
+   Natural height. No artificial empty white space.
+*/
+.dashboard-layout > .right-panel .academic-selector-card {
+  flex: 0 0 auto !important;
+
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+
+  margin: 0 !important;
+
+  box-sizing: border-box !important;
+
+  overflow: visible !important;
+}
+
+/* ------------------------------------------------------------
+   QUICK ACCESS
+   ------------------------------------------------------------ */
+
+/*
+   Quick Access consumes EXACTLY the remaining height
+   between Academic Summary and the bottom of Need Help.
+*/
+.dashboard-layout > .right-panel .quick-access-card {
+  flex: 1 1 0 !important;
+
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+
+  margin: 0 !important;
+
+  box-sizing: border-box !important;
+
+  overflow: hidden !important;
+
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+/* Heading uses only its natural height. */
+.dashboard-layout > .right-panel .quick-access-card > .side-card-header {
+  flex: 0 0 auto !important;
+
+  margin: 0 !important;
+}
+
+/*
+   Feature list gets ALL remaining Quick Access space.
+*/
+.dashboard-layout > .right-panel .quick-access-card > div:last-child {
+  flex: 1 1 0 !important;
+
+  min-height: 0 !important;
+
+  display: grid !important;
+
+  grid-template-rows:
+    repeat(5, minmax(0, 1fr)) !important;
+
+  align-content: stretch !important;
+}
+
+/*
+   EXACTLY equal feature rows.
+*/
+.dashboard-layout > .right-panel .quick-access-card > div:last-child > * {
+  min-height: 0 !important;
+
+  height: auto !important;
+
+  margin: 0 !important;
+
+  box-sizing: border-box !important;
+
+  display: flex !important;
+
+  align-items: center !important;
+}
+
+/*
+   Remove old row spacing that creates uneven gaps.
+*/
+.dashboard-layout > .right-panel .quick-access-card > div:last-child > * + * {
+  margin-top: 0 !important;
+}
+
+/*
+   Clean bottom edge.
+*/
+.dashboard-layout > .right-panel .quick-access-card > div:last-child > *:last-child {
+  border-bottom: none !important;
+}
+
+/* ------------------------------------------------------------
+   REMOVE OLD HEIGHT CONSTRAINTS
+   ------------------------------------------------------------ */
+
+.dashboard-layout > .sidebar,
+.dashboard-layout > .right-panel,
+.dashboard-layout > .right-panel .academic-selector-card,
+.dashboard-layout > .right-panel .quick-access-card {
+  block-size: auto !important;
+  min-block-size: 0 !important;
+  max-block-size: none !important;
+}
+
+/*
+   Re-apply the measured height to the right panel after the
+   generic block-size reset above.
+*/
+.dashboard-layout > .right-panel {
+  height: var(--matched-side-height, auto) !important;
+}
+
+/* ------------------------------------------------------------
+   HERO — REMOVE ARTIFICIAL DARK TRANSPARENT BAR
+   ------------------------------------------------------------ */
+
+.university-hero::before,
+.university-hero::after {
+  content: none !important;
+  display: none !important;
+
+  background: none !important;
+  opacity: 0 !important;
+}
+
+.university-hero-image {
+  opacity: 1 !important;
+  filter: none !important;
+}
+
+.university-hero-caption {
+  display: none !important;
+}
+
+/* ------------------------------------------------------------
+   DARK MODE — TIU CARD + QUICK ACCESS READABILITY
+   ------------------------------------------------------------ */
+
+body.dark-mode .sidebar-profile-card,
+.dark-mode .sidebar-profile-card,
+[data-theme="dark"] .sidebar-profile-card {
+  background: #211d2b !important;
+  color: #ffffff !important;
+}
+
+body.dark-mode .sidebar-profile-card h3,
+.dark-mode .sidebar-profile-card h3,
+[data-theme="dark"] .sidebar-profile-card h3 {
+  color: #ffffff !important;
+}
+
+body.dark-mode .sidebar-profile-card p,
+.dark-mode .sidebar-profile-card p,
+[data-theme="dark"] .sidebar-profile-card p {
+  color: #aaa4b7 !important;
+}
+
+body.dark-mode .quick-access-card,
+.dark-mode .quick-access-card,
+[data-theme="dark"] .quick-access-card {
+  background: #211d2b !important;
+  color: #ffffff !important;
+}
+
+body.dark-mode .quick-access-card h3,
+.dark-mode .quick-access-card h3,
+[data-theme="dark"] .quick-access-card h3 {
+  color: #ffffff !important;
+}
+
+body.dark-mode .quick-access-card h4,
+body.dark-mode .quick-access-card strong,
+.dark-mode .quick-access-card h4,
+.dark-mode .quick-access-card strong,
+[data-theme="dark"] .quick-access-card h4,
+[data-theme="dark"] .quick-access-card strong {
+  color: #f4f1f8 !important;
+}
+
+body.dark-mode .quick-access-card p,
+.dark-mode .quick-access-card p,
+[data-theme="dark"] .quick-access-card p {
+  color: #aaa4b7 !important;
+}
+
+
+/* ============================================================
+   MODAL INTERNAL SCROLLERS
+   User Guide + All Students
+   ============================================================ */
+
+/* Keep the modal itself within the viewport. */
+.modal-overlay {
+  overflow: hidden !important;
+}
+
+/* ------------------------------------------------------------
+   USER GUIDE MODAL
+   ------------------------------------------------------------ */
+
+/*
+   Keep the modal shell fixed.
+   Only the guide's contents should scroll.
+*/
+.user-guide-modal {
+  max-height: calc(100vh - 56px) !important;
+  height: calc(100vh - 56px) !important;
+  overflow: hidden !important;
+
+  display: flex !important;
+  flex-direction: column !important;
+  box-sizing: border-box !important;
+}
+
+/*
+   The actual guide sections become the scrollable area.
+*/
+.user-guide-modal .guide-content,
+.user-guide-modal .user-guide-content,
+.user-guide-modal .modal-content-body {
+  min-height: 0 !important;
+  flex: 1 1 auto !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+
+  padding-right: 10px !important;
+  scrollbar-gutter: stable !important;
+
+  overscroll-behavior: contain !important;
+}
+
+/* ------------------------------------------------------------
+   ALL STUDENTS MODAL
+   ------------------------------------------------------------ */
+
+.all-students-modal {
+  max-height: calc(100vh - 56px) !important;
+  height: calc(100vh - 56px) !important;
+  overflow: hidden !important;
+
+  display: flex !important;
+  flex-direction: column !important;
+  box-sizing: border-box !important;
+}
+
+/*
+   Student directory becomes the internal scrolling area.
+*/
+.all-students-modal .student-directory-list,
+.all-students-modal .students-directory-list,
+.all-students-modal .all-students-list,
+.all-students-modal .modal-content-body {
+  min-height: 0 !important;
+  flex: 1 1 auto !important;
+
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+
+  padding-right: 10px !important;
+  scrollbar-gutter: stable !important;
+
+  overscroll-behavior: contain !important;
+}
+
+/* ------------------------------------------------------------
+   CLEAN SCROLLBAR
+   ------------------------------------------------------------ */
+
+.user-guide-modal ::-webkit-scrollbar,
+.all-students-modal ::-webkit-scrollbar {
+  width: 8px;
+}
+
+.user-guide-modal ::-webkit-scrollbar-track,
+.all-students-modal ::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.user-guide-modal ::-webkit-scrollbar-thumb,
+.all-students-modal ::-webkit-scrollbar-thumb {
+  background: rgba(100, 90, 120, 0.45);
+  border-radius: 999px;
+}
+
+.user-guide-modal ::-webkit-scrollbar-thumb:hover,
+.all-students-modal ::-webkit-scrollbar-thumb:hover {
+  background: rgba(100, 90, 120, 0.7);
+}
+
+/* Firefox */
+.user-guide-modal,
+.all-students-modal {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(100, 90, 120, 0.45) transparent;
+}
+
+/* ------------------------------------------------------------
+   DARK MODE
+   ------------------------------------------------------------ */
+
+.dark-mode .user-guide-modal ::-webkit-scrollbar-thumb,
+.dark-mode .all-students-modal ::-webkit-scrollbar-thumb {
+  background: rgba(180, 170, 195, 0.35);
+}
+
+.dark-mode .user-guide-modal ::-webkit-scrollbar-thumb:hover,
+.dark-mode .all-students-modal ::-webkit-scrollbar-thumb:hover {
+  background: rgba(200, 190, 215, 0.55);
+}
+
+
+/* ============================================================
+   FINAL MODAL SCROLL FIX
+   Exact classes from App.jsx
+   ============================================================ */
+
+/* Keep the background/page from scrolling when a modal is open */
+.modal-overlay {
+  overflow: hidden !important;
+}
+
+/* ============================================================
+   USER GUIDE
+   Fixed modal + scrollable guide content
+   ============================================================ */
+
+.student-modal.help-modal {
+  height: min(820px, calc(100vh - 48px)) !important;
+  max-height: calc(100vh - 48px) !important;
+  overflow: hidden !important;
+
+  display: flex !important;
+  flex-direction: column !important;
+  box-sizing: border-box !important;
+}
+
+.student-modal.help-modal .guide-content {
+  flex: 1 1 0 !important;
+  min-height: 0 !important;
+
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+
+  padding-right: 12px !important;
+  margin-right: -4px !important;
+
+  scrollbar-width: thin !important;
+  overscroll-behavior: contain !important;
+}
+
+
+/* ============================================================
+   ALL STUDENTS
+   Fixed modal + scrollable student directory
+   ============================================================ */
+
+.student-modal.all-students-modal {
+  height: min(820px, calc(100vh - 48px)) !important;
+  max-height: calc(100vh - 48px) !important;
+  overflow: hidden !important;
+
+  display: flex !important;
+  flex-direction: column !important;
+  box-sizing: border-box !important;
+}
+
+.student-modal.all-students-modal .all-students-list {
+  flex: 1 1 0 !important;
+  min-height: 0 !important;
+
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+
+  padding-right: 12px !important;
+  margin-right: -4px !important;
+
+  scrollbar-width: thin !important;
+  overscroll-behavior: contain !important;
+}
+
+
+/* ============================================================
+   ADD STUDENT
+   Scroll the form itself when the screen is too short
+   ============================================================ */
+
+.student-modal.add-modal {
+  max-height: calc(100vh - 48px) !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+
+  box-sizing: border-box !important;
+
+  scrollbar-width: thin !important;
+  overscroll-behavior: contain !important;
+}
+
+
+/* ============================================================
+   SCROLLBAR
+   ============================================================ */
+
+.student-modal.help-modal .guide-content::-webkit-scrollbar,
+.student-modal.all-students-modal .all-students-list::-webkit-scrollbar,
+.student-modal.add-modal::-webkit-scrollbar {
+  width: 7px;
+}
+
+.student-modal.help-modal .guide-content::-webkit-scrollbar-track,
+.student-modal.all-students-modal .all-students-list::-webkit-scrollbar-track,
+.student-modal.add-modal::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.student-modal.help-modal .guide-content::-webkit-scrollbar-thumb,
+.student-modal.all-students-modal .all-students-list::-webkit-scrollbar-thumb,
+.student-modal.add-modal::-webkit-scrollbar-thumb {
+  background: rgba(100, 90, 120, 0.45);
+  border-radius: 999px;
+}
+
+.student-modal.help-modal .guide-content::-webkit-scrollbar-thumb:hover,
+.student-modal.all-students-modal .all-students-list::-webkit-scrollbar-thumb:hover,
+.student-modal.add-modal::-webkit-scrollbar-thumb:hover {
+  background: rgba(100, 90, 120, 0.7);
+}
+
+
+/* ============================================================
+   DARK MODE SCROLLBARS
+   ============================================================ */
+
+.dark-mode .student-modal.help-modal .guide-content::-webkit-scrollbar-thumb,
+.dark-mode .student-modal.all-students-modal .all-students-list::-webkit-scrollbar-thumb,
+.dark-mode .student-modal.add-modal::-webkit-scrollbar-thumb {
+  background: rgba(190, 180, 205, 0.4);
+}
+
+.dark-mode .student-modal.help-modal .guide-content::-webkit-scrollbar-thumb:hover,
+.dark-mode .student-modal.all-students-modal .all-students-list::-webkit-scrollbar-thumb:hover,
+.dark-mode .student-modal.add-modal::-webkit-scrollbar-thumb:hover {
+  background: rgba(210, 200, 225, 0.6);
+}
+
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 700px) {
+  .student-modal.help-modal,
+  .student-modal.all-students-modal,
+  .student-modal.add-modal {
+    max-height: calc(100vh - 24px) !important;
+  }
+
+  .student-modal.help-modal,
+  .student-modal.all-students-modal {
+    height: calc(100vh - 24px) !important;
+  }
+}
+
+
+/* ============================================================
+   ADD STUDENT MODAL — INSET INTERNAL SCROLLBAR
+   ============================================================ */
+
+.student-modal.add-modal {
+  box-sizing: border-box !important;
+  max-height: calc(100vh - 48px) !important;
+
+  /* Keep the scrollbar clipped inside the rounded card */
+  border-radius: 28px !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+
+  /* Creates breathing room between form content and scrollbar */
+  padding-right: 18px !important;
+
+  scrollbar-gutter: stable !important;
+}
+
+/* Make the scrollbar itself visually smaller */
+.student-modal.add-modal::-webkit-scrollbar {
+  width: 6px !important;
+}
+
+.student-modal.add-modal::-webkit-scrollbar-track {
+  background: transparent !important;
+  margin: 18px 0 !important;
+}
+
+.student-modal.add-modal::-webkit-scrollbar-thumb {
+  background: rgba(90, 82, 105, 0.45) !important;
+  border-radius: 999px !important;
+  border: 0 !important;
+}
+
+.student-modal.add-modal::-webkit-scrollbar-thumb:hover {
+  background: rgba(90, 82, 105, 0.7) !important;
+}
+
+/* Firefox */
+.student-modal.add-modal {
+  scrollbar-width: thin !important;
+  scrollbar-color: rgba(90, 82, 105, 0.45) transparent !important;
+}
+
+/* Dark mode */
+.dark-mode .student-modal.add-modal {
+  scrollbar-color: rgba(200, 190, 215, 0.4) transparent !important;
+}
+
+.dark-mode .student-modal.add-modal::-webkit-scrollbar-thumb {
+  background: rgba(200, 190, 215, 0.4) !important;
+}
+
+.dark-mode .student-modal.add-modal::-webkit-scrollbar-thumb:hover {
+  background: rgba(220, 210, 230, 0.6) !important;
+}
+
