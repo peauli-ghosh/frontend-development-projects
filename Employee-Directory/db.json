@@ -1,0 +1,694 @@
+{
+  "employees": [
+    {
+      "id": "1",
+      "name": "Ananya Sen",
+      "employeeId": "EMP001",
+      "department": "Field Operations",
+      "departmentId": "DEPT001",
+      "gender": "Female",
+      "phone": "+91 98765 43210",
+      "email": "ananya.sen@farmix.com",
+      "localAddress": "Howrah, West Bengal",
+      "permanentAddress": "Bardhaman, West Bengal",
+      "status": "Active",
+      "attendance": 96,
+      "role": "Field Supervisor",
+      "joiningYear": 2021,
+      "projects": [
+        "Harvest Planning",
+        "Field Productivity"
+      ],
+      "image": "https://randomuser.me/api/portraits/women/44.jpg"
+    },
+    {
+      "id": "2",
+      "name": "Arjun Das",
+      "employeeId": "EMP002",
+      "department": "Livestock",
+      "departmentId": "DEPT002",
+      "gender": "Male",
+      "phone": "+91 98310 24567",
+      "email": "arjun.das@farmix.com",
+      "localAddress": "Kolkata, West Bengal",
+      "permanentAddress": "Malda, West Bengal",
+      "status": "Active",
+      "attendance": 91,
+      "role": "Livestock Specialist",
+      "joiningYear": 2022,
+      "projects": [
+        "Dairy Health Program",
+        "Livestock Nutrition"
+      ],
+      "image": "https://randomuser.me/api/portraits/men/32.jpg"
+    },
+    {
+      "id": "3",
+      "name": "Moumita Roy",
+      "employeeId": "EMP003",
+      "department": "Administration",
+      "departmentId": "DEPT003",
+      "gender": "Female",
+      "phone": "+91 91234 56789",
+      "email": "moumita.roy@farmix.com",
+      "localAddress": "Siliguri, West Bengal",
+      "permanentAddress": "Jalpaiguri, West Bengal",
+      "status": "On Leave",
+      "attendance": 88,
+      "role": "Administrative Officer",
+      "joiningYear": 2020,
+      "projects": [
+        "Office Operations",
+        "Farm Documentation"
+      ],
+      "image": "https://randomuser.me/api/portraits/women/65.jpg"
+    },
+    {
+      "id": "4",
+      "name": "Rohan Mukherjee",
+      "employeeId": "EMP004",
+      "department": "Agriculture",
+      "departmentId": "DEPT004",
+      "gender": "Male",
+      "phone": "+91 99876 54321",
+      "email": "rohan.mukherjee@farmix.com",
+      "localAddress": "Durgapur, West Bengal",
+      "permanentAddress": "Asansol, West Bengal",
+      "status": "Active",
+      "attendance": 94,
+      "role": "Agriculture Officer",
+      "joiningYear": 2019,
+      "projects": [
+        "Crop Yield Optimization",
+        "Smart Irrigation"
+      ],
+      "image": "https://randomuser.me/api/portraits/men/46.jpg"
+    },
+    {
+      "id": "5",
+      "name": "Priya Sharma",
+      "employeeId": "EMP005",
+      "department": "Human Resources",
+      "departmentId": "DEPT005",
+      "gender": "Female",
+      "phone": "+91 98712 34567",
+      "email": "priya.sharma@farmix.com",
+      "localAddress": "Kolkata, West Bengal",
+      "permanentAddress": "Ranchi, Jharkhand",
+      "status": "Active",
+      "attendance": 97,
+      "role": "HR Executive",
+      "joiningYear": 2023,
+      "projects": [
+        "Employee Welfare",
+        "Recruitment Drive"
+      ],
+      "image": "https://randomuser.me/api/portraits/women/47.jpg"
+    },
+    {
+      "id": "6",
+      "name": "Sourav Ghosh",
+      "employeeId": "EMP006",
+      "department": "Field Operations",
+      "departmentId": "DEPT001",
+      "gender": "Male",
+      "phone": "+91 97654 32108",
+      "email": "sourav.ghosh@farmix.com",
+      "localAddress": "Uluberia, West Bengal",
+      "permanentAddress": "Howrah, West Bengal",
+      "status": "Inactive",
+      "attendance": 72,
+      "role": "Field Associate",
+      "joiningYear": 2022,
+      "projects": [
+        "Field Productivity"
+      ],
+      "image": "https://randomuser.me/api/portraits/men/75.jpg"
+    },
+    {
+      "id": "7",
+      "name": "Ishita Banerjee",
+      "employeeId": "EMP007",
+      "department": "Agriculture",
+      "departmentId": "DEPT004",
+      "gender": "Female",
+      "phone": "+91 98123 45670",
+      "email": "ishita.banerjee@farmix.com",
+      "localAddress": "Kolkata, West Bengal",
+      "permanentAddress": "Krishnanagar, West Bengal",
+      "status": "Active",
+      "attendance": 98,
+      "role": "Crop Specialist",
+      "joiningYear": 2021,
+      "projects": [
+        "Smart Irrigation",
+        "Crop Yield Optimization"
+      ],
+      "image": "https://randomuser.me/api/portraits/women/21.jpg"
+    },
+    {
+      "id": "8",
+      "name": "Vikram Singh",
+      "employeeId": "EMP008",
+      "department": "Security",
+      "departmentId": "DEPT006",
+      "gender": "Male",
+      "phone": "+91 98989 12345",
+      "email": "vikram.singh@farmix.com",
+      "localAddress": "Howrah, West Bengal",
+      "permanentAddress": "Patna, Bihar",
+      "status": "Active",
+      "attendance": 93,
+      "role": "Security Supervisor",
+      "joiningYear": 2018,
+      "projects": [
+        "Farm Security",
+        "Access Control"
+      ],
+      "image": "https://randomuser.me/api/portraits/men/52.jpg"
+    },
+    {
+      "id": "9",
+      "name": "Sneha Paul",
+      "employeeId": "EMP009",
+      "department": "Administration",
+      "departmentId": "DEPT003",
+      "gender": "Female",
+      "phone": "+91 90070 11223",
+      "email": "sneha.paul@farmix.com",
+      "localAddress": "Kolkata, West Bengal",
+      "permanentAddress": "Haldia, West Bengal",
+      "status": "Active",
+      "attendance": 95,
+      "role": "Office Coordinator",
+      "joiningYear": 2023,
+      "projects": [
+        "Office Operations",
+        "Farm Documentation"
+      ],
+      "image": "https://randomuser.me/api/portraits/women/49.jpg"
+    },
+    {
+      "id": "10",
+      "name": "Abhishek Dutta",
+      "employeeId": "EMP010",
+      "department": "Livestock",
+      "departmentId": "DEPT002",
+      "gender": "Male",
+      "phone": "+91 93310 67890",
+      "email": "abhishek.dutta@farmix.com",
+      "localAddress": "Bally, West Bengal",
+      "permanentAddress": "Bankura, West Bengal",
+      "status": "On Leave",
+      "attendance": 86,
+      "role": "Livestock Associate",
+      "joiningYear": 2020,
+      "projects": [
+        "Dairy Health Program"
+      ],
+      "image": "https://randomuser.me/api/portraits/men/41.jpg"
+    },
+    {
+      "id": "11",
+      "name": "Koushik Chatterjee",
+      "employeeId": "EMP011",
+      "department": "Field Operations",
+      "departmentId": "DEPT001",
+      "gender": "Male",
+      "phone": "+91 98302 11456",
+      "email": "koushik.chatterjee@farmix.com",
+      "localAddress": "Howrah, West Bengal",
+      "permanentAddress": "Hooghly, West Bengal",
+      "status": "Active",
+      "attendance": 92,
+      "role": "Field Coordinator",
+      "joiningYear": 2022,
+      "projects": [
+        "Harvest Planning",
+        "Field Productivity"
+      ],
+      "image": "https://randomuser.me/api/portraits/men/14.jpg"
+    },
+    {
+      "id": "12",
+      "name": "Riya Chakraborty",
+      "employeeId": "EMP012",
+      "department": "Agriculture",
+      "departmentId": "DEPT004",
+      "gender": "Female",
+      "phone": "+91 98744 22110",
+      "email": "riya.chakraborty@farmix.com",
+      "localAddress": "Kolkata, West Bengal",
+      "permanentAddress": "Nadia, West Bengal",
+      "status": "Active",
+      "attendance": 96,
+      "role": "Agronomy Specialist",
+      "joiningYear": 2024,
+      "projects": [
+        "Smart Irrigation",
+        "Soil Health"
+      ],
+      "image": "https://randomuser.me/api/portraits/women/33.jpg"
+    },
+    {
+      "id": "13",
+      "name": "Tanmay Bose",
+      "employeeId": "EMP013",
+      "department": "Livestock",
+      "departmentId": "DEPT002",
+      "gender": "Male",
+      "phone": "+91 98309 88765",
+      "email": "tanmay.bose@farmix.com",
+      "localAddress": "Kolkata, West Bengal",
+      "permanentAddress": "Murshidabad, West Bengal",
+      "status": "Active",
+      "attendance": 89,
+      "role": "Veterinary Assistant",
+      "joiningYear": 2021,
+      "projects": [
+        "Dairy Health Program",
+        "Livestock Nutrition"
+      ],
+      "image": "https://randomuser.me/api/portraits/men/67.jpg"
+    },
+    {
+      "id": "14",
+      "name": "Nandini Das",
+      "employeeId": "EMP014",
+      "department": "Human Resources",
+      "departmentId": "DEPT005",
+      "gender": "Female",
+      "phone": "+91 90078 33445",
+      "email": "nandini.das@farmix.com",
+      "localAddress": "Howrah, West Bengal",
+      "permanentAddress": "Burdwan, West Bengal",
+      "status": "Active",
+      "attendance": 94,
+      "role": "People Operations Specialist",
+      "joiningYear": 2022,
+      "projects": [
+        "Employee Welfare",
+        "Recruitment Drive"
+      ],
+      "image": "https://randomuser.me/api/portraits/women/68.jpg"
+    },
+    {
+      "id": "15",
+      "name": "Amitava Roy",
+      "employeeId": "EMP015",
+      "department": "Administration",
+      "departmentId": "DEPT003",
+      "gender": "Male",
+      "phone": "+91 98311 45678",
+      "email": "amitava.roy@farmix.com",
+      "localAddress": "Kolkata, West Bengal",
+      "permanentAddress": "Howrah, West Bengal",
+      "status": "Active",
+      "attendance": 90,
+      "role": "Operations Administrator",
+      "joiningYear": 2019,
+      "projects": [
+        "Office Operations",
+        "Farm Documentation"
+      ],
+      "image": "https://randomuser.me/api/portraits/men/22.jpg"
+    },
+    {
+      "id": "16",
+      "name": "Puja Ghosh",
+      "employeeId": "EMP016",
+      "department": "Security",
+      "departmentId": "DEPT006",
+      "gender": "Female",
+      "phone": "+91 98753 76543",
+      "email": "puja.ghosh@farmix.com",
+      "localAddress": "Howrah, West Bengal",
+      "permanentAddress": "Kolkata, West Bengal",
+      "status": "Active",
+      "attendance": 99,
+      "role": "Security Officer",
+      "joiningYear": 2024,
+      "projects": [
+        "Farm Security",
+        "Access Control"
+      ],
+      "image": "https://randomuser.me/api/portraits/women/25.jpg"
+    },
+    {
+      "id": "17",
+      "name": "Debanjan Saha",
+      "employeeId": "EMP017",
+      "department": "Field Operations",
+      "departmentId": "DEPT001",
+      "gender": "Male",
+      "phone": "+91 98316 55667",
+      "email": "debanjan.saha@farmix.com",
+      "localAddress": "Serampore, West Bengal",
+      "permanentAddress": "Hooghly, West Bengal",
+      "status": "On Leave",
+      "attendance": 84,
+      "role": "Field Associate",
+      "joiningYear": 2023,
+      "projects": [
+        "Harvest Planning"
+      ],
+      "image": "https://randomuser.me/api/portraits/men/19.jpg"
+    },
+    {
+      "id": "18",
+      "name": "Madhurima Sen",
+      "employeeId": "EMP018",
+      "department": "Agriculture",
+      "departmentId": "DEPT004",
+      "gender": "Female",
+      "phone": "+91 91236 77889",
+      "email": "madhurima.sen@farmix.com",
+      "localAddress": "Kolkata, West Bengal",
+      "permanentAddress": "Birbhum, West Bengal",
+      "status": "Active",
+      "attendance": 97,
+      "role": "Soil Scientist",
+      "joiningYear": 2020,
+      "projects": [
+        "Soil Health",
+        "Crop Yield Optimization"
+      ],
+      "image": "https://randomuser.me/api/portraits/women/12.jpg"
+    },
+    {
+      "id": "19",
+      "name": "Sayan Mitra",
+      "employeeId": "EMP019",
+      "department": "Livestock",
+      "departmentId": "DEPT002",
+      "gender": "Male",
+      "phone": "+91 98307 99112",
+      "email": "sayan.mitra@farmix.com",
+      "localAddress": "Kolkata, West Bengal",
+      "permanentAddress": "Jhargram, West Bengal",
+      "status": "Inactive",
+      "attendance": 69,
+      "role": "Livestock Associate",
+      "joiningYear": 2021,
+      "projects": [
+        "Livestock Nutrition"
+      ],
+      "image": "https://randomuser.me/api/portraits/men/36.jpg"
+    },
+    {
+      "id": "20",
+      "name": "Tania Mukherjee",
+      "employeeId": "EMP020",
+      "department": "Human Resources",
+      "departmentId": "DEPT005",
+      "gender": "Female",
+      "phone": "+91 98301 22334",
+      "email": "tania.mukherjee@farmix.com",
+      "localAddress": "Kolkata, West Bengal",
+      "permanentAddress": "Durgapur, West Bengal",
+      "status": "Active",
+      "attendance": 95,
+      "role": "Recruitment Coordinator",
+      "joiningYear": 2023,
+      "projects": [
+        "Recruitment Drive",
+        "Employee Welfare"
+      ],
+      "image": "https://randomuser.me/api/portraits/women/52.jpg"
+    },
+    {
+      "id": "21",
+      "name": "Rahul Prasad",
+      "employeeId": "EMP021",
+      "department": "Security",
+      "departmentId": "DEPT006",
+      "gender": "Male",
+      "phone": "+91 98741 88990",
+      "email": "rahul.prasad@farmix.com",
+      "localAddress": "Howrah, West Bengal",
+      "permanentAddress": "Gaya, Bihar",
+      "status": "Active",
+      "attendance": 91,
+      "role": "Security Associate",
+      "joiningYear": 2022,
+      "projects": [
+        "Farm Security"
+      ],
+      "image": "https://randomuser.me/api/portraits/men/61.jpg"
+    },
+    {
+      "id": "22",
+      "name": "Sohini Dey",
+      "employeeId": "EMP022",
+      "department": "Administration",
+      "departmentId": "DEPT003",
+      "gender": "Female",
+      "phone": "+91 91234 88991",
+      "email": "sohini.dey@farmix.com",
+      "localAddress": "Kolkata, West Bengal",
+      "permanentAddress": "Howrah, West Bengal",
+      "status": "Active",
+      "attendance": 93,
+      "role": "Documentation Officer",
+      "joiningYear": 2024,
+      "projects": [
+        "Farm Documentation"
+      ],
+      "image": "https://randomuser.me/api/portraits/women/61.jpg"
+    },
+    {
+      "id": "23",
+      "name": "Aditya Kapoor",
+      "employeeId": "EMP023",
+      "department": "Agriculture",
+      "departmentId": "DEPT004",
+      "gender": "Male",
+      "phone": "+91 90070 44556",
+      "email": "aditya.kapoor@farmix.com",
+      "localAddress": "Kolkata, West Bengal",
+      "permanentAddress": "Delhi, India",
+      "status": "Active",
+      "attendance": 92,
+      "role": "Irrigation Engineer",
+      "joiningYear": 2021,
+      "projects": [
+        "Smart Irrigation"
+      ],
+      "image": "https://randomuser.me/api/portraits/men/55.jpg"
+    },
+    {
+      "id": "24",
+      "name": "Srijita Paul",
+      "employeeId": "EMP024",
+      "department": "Field Operations",
+      "departmentId": "DEPT001",
+      "gender": "Female",
+      "phone": "+91 98765 11223",
+      "email": "srijita.paul@farmix.com",
+      "localAddress": "Howrah, West Bengal",
+      "permanentAddress": "Nadia, West Bengal",
+      "status": "Active",
+      "attendance": 98,
+      "role": "Field Analyst",
+      "joiningYear": 2024,
+      "projects": [
+        "Field Productivity",
+        "Harvest Planning"
+      ],
+      "image": "https://randomuser.me/api/portraits/women/75.jpg"
+    },
+    {
+      "id": "25",
+      "name": "Manish Kumar",
+      "employeeId": "EMP025",
+      "department": "Livestock",
+      "departmentId": "DEPT002",
+      "gender": "Male",
+      "phone": "+91 98308 55661",
+      "email": "manish.kumar@farmix.com",
+      "localAddress": "Howrah, West Bengal",
+      "permanentAddress": "Muzaffarpur, Bihar",
+      "status": "Active",
+      "attendance": 94,
+      "role": "Dairy Supervisor",
+      "joiningYear": 2019,
+      "projects": [
+        "Dairy Health Program"
+      ],
+      "image": "https://randomuser.me/api/portraits/men/81.jpg"
+    },
+    {
+      "id": "26",
+      "name": "Ayesha Rahman",
+      "employeeId": "EMP026",
+      "department": "Human Resources",
+      "departmentId": "DEPT005",
+      "gender": "Female",
+      "phone": "+91 91239 77665",
+      "email": "ayesha.rahman@farmix.com",
+      "localAddress": "Kolkata, West Bengal",
+      "permanentAddress": "Baharampur, West Bengal",
+      "status": "On Leave",
+      "attendance": 87,
+      "role": "HR Associate",
+      "joiningYear": 2024,
+      "projects": [
+        "Employee Welfare"
+      ],
+      "image": "https://randomuser.me/api/portraits/women/79.jpg"
+    },
+    {
+      "id": "27",
+      "name": "Soumik Basu",
+      "employeeId": "EMP027",
+      "department": "Security",
+      "departmentId": "DEPT006",
+      "gender": "Male",
+      "phone": "+91 98319 11224",
+      "email": "soumik.basu@farmix.com",
+      "localAddress": "Bally, West Bengal",
+      "permanentAddress": "Howrah, West Bengal",
+      "status": "Active",
+      "attendance": 95,
+      "role": "Security Officer",
+      "joiningYear": 2020,
+      "projects": [
+        "Access Control",
+        "Farm Security"
+      ],
+      "image": "https://randomuser.me/api/portraits/men/72.jpg"
+    },
+    {
+      "id": "28",
+      "name": "Rupsa Majumdar",
+      "employeeId": "EMP028",
+      "department": "Administration",
+      "departmentId": "DEPT003",
+      "gender": "Female",
+      "phone": "+91 90072 66778",
+      "email": "rupsa.majumdar@farmix.com",
+      "localAddress": "Kolkata, West Bengal",
+      "permanentAddress": "Chandannagar, West Bengal",
+      "status": "Active",
+      "attendance": 96,
+      "role": "Administrative Assistant",
+      "joiningYear": 2023,
+      "projects": [
+        "Office Operations"
+      ],
+      "image": "https://randomuser.me/api/portraits/women/35.jpg"
+    },
+    {
+      "id": "29",
+      "name": "Arindam Ghosh",
+      "employeeId": "EMP029",
+      "department": "Agriculture",
+      "departmentId": "DEPT004",
+      "gender": "Male",
+      "phone": "+91 98746 99887",
+      "email": "arindam.ghosh@farmix.com",
+      "localAddress": "Howrah, West Bengal",
+      "permanentAddress": "Bishnupur, West Bengal",
+      "status": "Active",
+      "attendance": 90,
+      "role": "Agricultural Analyst",
+      "joiningYear": 2022,
+      "projects": [
+        "Crop Yield Optimization",
+        "Soil Health"
+      ],
+      "image": "https://randomuser.me/api/portraits/men/29.jpg"
+    },
+    {
+      "id": "30",
+      "name": "Kavya Nair",
+      "employeeId": "EMP030",
+      "department": "Field Operations",
+      "departmentId": "DEPT001",
+      "gender": "Female",
+      "phone": "+91 91238 44556",
+      "email": "kavya.nair@farmix.com",
+      "localAddress": "Kolkata, West Bengal",
+      "permanentAddress": "Kochi, Kerala",
+      "status": "Active",
+      "attendance": 97,
+      "role": "Field Supervisor",
+      "joiningYear": 2023,
+      "projects": [
+        "Harvest Planning",
+        "Field Productivity"
+      ],
+      "image": "https://randomuser.me/api/portraits/women/45.jpg"
+    }
+  ],
+  "departments": [
+    {
+      "id": "DEPT001",
+      "name": "Field Operations",
+      "head": "Ananya Sen",
+      "year": 2018,
+      "description": "Manages daily field activities, workforce coordination, crop operations and farm productivity.",
+      "projects": [
+        "Harvest Planning",
+        "Field Productivity"
+      ]
+    },
+    {
+      "id": "DEPT002",
+      "name": "Livestock",
+      "head": "Arjun Das",
+      "year": 2019,
+      "description": "Responsible for livestock health, dairy operations, nutrition and animal-care programs.",
+      "projects": [
+        "Dairy Health Program",
+        "Livestock Nutrition"
+      ]
+    },
+    {
+      "id": "DEPT003",
+      "name": "Administration",
+      "head": "Moumita Roy",
+      "year": 2018,
+      "description": "Handles documentation, office operations, records and administrative coordination.",
+      "projects": [
+        "Office Operations",
+        "Farm Documentation"
+      ]
+    },
+    {
+      "id": "DEPT004",
+      "name": "Agriculture",
+      "head": "Rohan Mukherjee",
+      "year": 2017,
+      "description": "Focuses on crop management, irrigation, soil health and agricultural productivity.",
+      "projects": [
+        "Crop Yield Optimization",
+        "Smart Irrigation",
+        "Soil Health"
+      ]
+    },
+    {
+      "id": "DEPT005",
+      "name": "Human Resources",
+      "head": "Priya Sharma",
+      "year": 2020,
+      "description": "Manages recruitment, employee welfare, workforce records and people operations.",
+      "projects": [
+        "Employee Welfare",
+        "Recruitment Drive"
+      ]
+    },
+    {
+      "id": "DEPT006",
+      "name": "Security",
+      "head": "Vikram Singh",
+      "year": 2017,
+      "description": "Responsible for farm security, personnel safety, access control and site monitoring.",
+      "projects": [
+        "Farm Security",
+        "Access Control"
+      ]
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}
