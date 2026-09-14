@@ -559,6 +559,15 @@ The project therefore avoids relying on a separate application-level PostCSS con
 
 The project is designed so that the React frontend and JSON Server backend can be deployed separately.
 
+### Production API Configuration
+
+The deployed frontend must be configured with the URL of the hosted JSON Server API through the `VITE_API_URL` environment variable.
+
+For production, set:
+
+```text
+VITE_API_URL=https://employee-directory-api-u19z.onrender.com
+
 ### Deployment Architecture
 
 ```text
