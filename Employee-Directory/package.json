@@ -1,4 +1,4 @@
-{
+﻿{
   "name": "employee-directory",
   "private": true,
   "version": "0.0.0",
@@ -8,7 +8,7 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "server": "json-server db.json --port 3001"
+    "server": "node server.js"
   },
   "dependencies": {
     "lucide-react": "^1.45.0",
@@ -28,3 +28,4 @@
     "vite": "^8.3.0"
   }
 }
+

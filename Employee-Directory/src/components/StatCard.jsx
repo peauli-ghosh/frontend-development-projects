@@ -1,15 +1,19 @@
-function StatCard({ icon, label, value, detail }) {
+﻿function StatCard({ icon, label, value, detail, onClick }) {
   return (
-    <article className="stat-card">
-      <div className="stat-top">
-        <span className="stat-icon">{icon}</span>
+    <button
+      className="stat-card clickable-stat-card"
+      type="button"
+      onClick={onClick}
+    >
+      <div className="stat-card-top">
+        <div className="stat-icon">{icon}</div>
         <span className="stat-label">{label}</span>
       </div>
 
-      <div className="stat-value">{value}</div>
+      <strong className="stat-value">{value}</strong>
 
-      {detail && <div className="stat-detail">{detail}</div>}
-    </article>
+      <span className="stat-detail">{detail}</span>
+    </button>
   );
 }
 

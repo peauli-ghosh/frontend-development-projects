@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Save, X } from "lucide-react";
+﻿import { useState } from "react";
+import { ImagePlus, Save, X } from "lucide-react";
 
 const emptyEmployee = {
   name: "",
@@ -39,6 +39,7 @@ function EmployeeForm({
 
   const [form, setForm] = useState(initialForm);
   const [projectsText, setProjectsText] = useState(initialProjects);
+  const [imageError, setImageError] = useState("");
 
   function handleChange(event) {
     const { name, value } = event.target;
@@ -50,6 +51,114 @@ function EmployeeForm({
           ? Number(value)
           : value
     }));
+  }
+
+  function handleDepartmentChange(event) {
+    const selectedDepartment = departments.find(
+      (item) => item.name === event.target.value
+    );
+
+    setForm((current) => ({
+      ...current,
+      department: event.target.value,
+      departmentId: selectedDepartment?.id || ""
+    }));
+  }
+
+  function handleImageChange(event) {
+    const file = event.target.files?.[0];
+
+    if (!file) {
+      return;
+    }
+
+    if (!["image/jpeg", "image/png"].includes(file.type)) {
+      setImageError("Please select a JPG or PNG image.");
+      return;
+    }
+
+    if (file.size > 2 * 1024 * 1024) {
+      setImageError("Image must be smaller than 2 MB.");
+      return;
+    }
+
+    setImageError("");
+
+    const reader = new FileReader();
+
+    reader.onload = () => {
+      const image = new Image();
+
+      image.onload = () => {
+        const maxDimension = 256;
+        const scale = Math.min(
+          1,
+          maxDimension / Math.max(image.width, image.height)
+        );
+
+        const canvas = document.createElement("canvas");
+
+        canvas.width = Math.max(
+          1,
+          Math.round(image.width * scale)
+        );
+
+        canvas.height = Math.max(
+          1,
+          Math.round(image.height * scale)
+        );
+
+        const context = canvas.getContext("2d");
+
+        if (!context) {
+          setImageError("Unable to process this image.");
+          return;
+        }
+
+        context.drawImage(
+          image,
+          0,
+          0,
+          canvas.width,
+          canvas.height
+        );
+
+        let quality = 0.78;
+        let compressedImage = canvas.toDataURL(
+          "image/jpeg",
+          quality
+        );
+
+        while (
+          compressedImage.length > 90000 &&
+          quality > 0.35
+        ) {
+          quality -= 0.05;
+
+          compressedImage = canvas.toDataURL(
+            "image/jpeg",
+            quality
+          );
+        }
+
+        setForm((current) => ({
+          ...current,
+          image: compressedImage
+        }));
+      };
+
+      image.onerror = () => {
+        setImageError("Unable to read this image.");
+      };
+
+      image.src = reader.result;
+    };
+
+    reader.onerror = () => {
+      setImageError("Unable to read this image.");
+    };
+
+    reader.readAsDataURL(file);
   }
 
   function handleSubmit(event) {
@@ -97,40 +206,58 @@ function EmployeeForm({
             <div className="form-grid">
               <label className="form-field">
                 <span>Full Name *</span>
+
                 <input
                   name="name"
                   value={form.name}
                   onChange={handleChange}
+                  readOnly={Boolean(employee)}
                   required
                 />
               </label>
 
               <label className="form-field">
                 <span>Employee ID *</span>
+
                 <input
+                  className={employee ? "readonly-field" : ""}
                   name="employeeId"
                   value={form.employeeId}
                   onChange={handleChange}
+                  readOnly={Boolean(employee)}
                   required
                 />
               </label>
 
               <label className="form-field">
                 <span>Gender</span>
+
                 <select
                   name="gender"
                   value={form.gender}
                   onChange={handleChange}
                 >
-                  <option value="">Select gender</option>
-                  <option value="Female">Female</option>
-                  <option value="Male">Male</option>
-                  <option value="Other">Other</option>
+                  <option value="">
+                    Select gender
+                  </option>
+
+                  <option value="Female">
+                    Female
+                  </option>
+
+                  <option value="Male">
+                    Male
+                  </option>
+
+                  <option value="Other">
+                    Other
+                  </option>
                 </select>
               </label>
 
               <label className="form-field">
                 <span>Joining Year</span>
+
                 <input
                   name="joiningYear"
                   type="number"
@@ -153,7 +280,7 @@ function EmployeeForm({
                 <select
                   name="department"
                   value={form.department}
-                  onChange={handleChange}
+                  onChange={handleDepartmentChange}
                   required
                 >
                   <option value="">
@@ -161,8 +288,11 @@ function EmployeeForm({
                   </option>
 
                   {departments.map((item) => (
-                    <option key={item} value={item}>
-                      {item}
+                    <option
+                      key={item.id}
+                      value={item.name}
+                    >
+                      {item.name}
                     </option>
                   ))}
                 </select>
@@ -174,8 +304,8 @@ function EmployeeForm({
                 <input
                   name="departmentId"
                   value={form.departmentId}
-                  onChange={handleChange}
-                  placeholder="e.g. DEPT001"
+                  readOnly
+                  placeholder="Automatically assigned"
                 />
               </label>
 
@@ -216,26 +346,66 @@ function EmployeeForm({
                 <span>Attendance (%)</span>
 
                 <input
+                  className={employee ? "readonly-field" : ""}
                   name="attendance"
                   type="number"
                   min="0"
                   max="100"
                   value={form.attendance}
                   onChange={handleChange}
+                  readOnly={Boolean(employee)}
                 />
               </label>
 
-              <label className="form-field">
-                <span>Profile Image URL</span>
+              <div className="form-field">
+                <span>Profile Photo</span>
 
-                <input
-                  name="image"
-                  type="url"
-                  value={form.image}
-                  onChange={handleChange}
-                  placeholder="https://..."
-                />
-              </label>
+                <div className="image-upload">
+                  <label
+                    className="image-upload-button"
+                    htmlFor="employee-image"
+                  >
+                    <ImagePlus size={17} />
+                    Choose JPG / PNG
+                  </label>
+
+                  <input
+                    id="employee-image"
+                    type="file"
+                    accept="image/jpeg,image/png"
+                    onChange={handleImageChange}
+                    hidden
+                  />
+
+                  {form.image && (
+                    <div className="image-preview">
+                      <img
+                        src={form.image}
+                        alt="Profile preview"
+                      />
+
+                      <div>
+                        <strong>Photo selected</strong>
+                        <small>
+                          This image will be saved with the employee.
+                        </small>
+                      </div>
+                    </div>
+                  )}
+
+                  {!form.image && (
+                    <small>
+                      Upload a JPG or PNG image, up to 2 MB.
+                    </small>
+                  )}
+
+                  {imageError && (
+                    <small className="form-error">
+                      {imageError}
+                    </small>
+                  )}
+                </div>
+              </div>
             </div>
           </div>
 

@@ -1,67 +1,137 @@
-import { useState } from "react";
-import {
-  Building2,
-  Menu,
-  Moon,
-  Sun,
-  X
-} from "lucide-react";
+﻿import { Building2, Sun, Moon } from "lucide-react";
+import { useEffect, useState } from "react";
 
-function Header({ theme, onToggleTheme }) {
-  const [menuOpen, setMenuOpen] = useState(false);
+function Header({ theme, onToggleTheme, onNavigate }) {
+  const [activeSection, setActiveSection] = useState("dashboard");
+
+  useEffect(() => {
+    const ids = [
+      "dashboard",
+      "employees",
+      "departments",
+      "administration"
+    ];
+
+    const sections = ids
+      .map((id) => document.getElementById(id))
+      .filter(Boolean);
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort(
+            (a, b) =>
+              b.intersectionRatio - a.intersectionRatio
+          );
+
+        if (visible[0]) {
+          setActiveSection(visible[0].target.id);
+        }
+      },
+      {
+        rootMargin: "-25% 0px -60% 0px",
+        threshold: [0.1, 0.3, 0.5]
+      }
+    );
+
+    sections.forEach((section) => observer.observe(section));
+
+    return () => observer.disconnect();
+  }, []);
+
+  function navigate(id) {
+    setActiveSection(id);
+    onNavigate(id);
+  }
 
   return (
-    <header className="app-header">
+    <header className="site-header">
       <div className="header-inner">
-        <a className="brand" href="#top" aria-label="Employee Directory home">
-          <span className="brand-icon">
-            <Building2 size={19} strokeWidth={2.2} />
+        <button
+          className="brand"
+          type="button"
+          onClick={() => navigate("dashboard")}
+        >
+          <span className="brand-mark">
+            <Building2 size={19} />
           </span>
-          <span>Employee Directory</span>
-        </a>
 
-        <nav className={`main-nav ${menuOpen ? "open" : ""}`}>
-          <a href="#dashboard" onClick={() => setMenuOpen(false)}>
+          <span className="brand-name">
+            Employee Directory
+          </span>
+        </button>
+
+        <nav className="main-nav" aria-label="Main navigation">
+          <button
+            className={
+              activeSection === "dashboard"
+                ? "active"
+                : ""
+            }
+            type="button"
+            onClick={() => navigate("dashboard")}
+          >
             Dashboard
-          </a>
+          </button>
 
-          <a
-            href="#employees"
-            className="active"
-            onClick={() => setMenuOpen(false)}
+          <button
+            className={
+              activeSection === "employees"
+                ? "active"
+                : ""
+            }
+            type="button"
+            onClick={() => navigate("employees")}
           >
             Employees
-          </a>
+          </button>
 
-          <a href="#departments" onClick={() => setMenuOpen(false)}>
+          <button
+            className={
+              activeSection === "departments"
+                ? "active"
+                : ""
+            }
+            type="button"
+            onClick={() => navigate("departments")}
+          >
             Departments
-          </a>
+          </button>
+
+          <button
+            className={
+              activeSection === "administration"
+                ? "active"
+                : ""
+            }
+            type="button"
+            onClick={() => navigate("administration")}
+          >
+            Administration
+          </button>
         </nav>
 
-        <div className="header-actions">
-          <button
-            className="theme-button"
-            type="button"
-            onClick={onToggleTheme}
-            aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
-            title={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
-          >
-            {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
-          </button>
-
-          <button
-            className="mobile-menu-button"
-            type="button"
-            onClick={() => setMenuOpen((current) => !current)}
-            aria-label={menuOpen ? "Close navigation" : "Open navigation"}
-            aria-expanded={menuOpen}
-          >
-            {menuOpen ? <X size={21} /> : <Menu size={21} />}
-          </button>
-        </div>
+        <button
+          className="theme-toggle"
+          type="button"
+          onClick={onToggleTheme}
+          aria-label={
+            theme === "dark"
+              ? "Switch to light mode"
+              : "Switch to dark mode"
+          }
+        >
+          {theme === "dark" ? (
+            <Sun size={18} />
+          ) : (
+            <Moon size={18} />
+          )}
+        </button>
       </div>
     </header>
   );
 }
 
 export default Header;
+

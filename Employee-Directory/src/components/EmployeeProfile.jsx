@@ -1,5 +1,4 @@
 import {
-
   MapPin,
   Phone,
   BriefcaseBusiness,
@@ -10,12 +9,11 @@ import {
   X
 } from "lucide-react";
 
-function EmployeeProfile({
-  employee,
-  onClose,
-  onEdit,
-  onDelete
-}) {
+function statusClass(status) {
+  return (status || "Unknown").toLowerCase().replace(/\s+/g, "-");
+}
+
+function EmployeeProfile({ employee, onClose, onEdit, onDelete }) {
   if (!employee) return null;
 
   const projects = Array.isArray(employee.projects)
@@ -29,53 +27,38 @@ function EmployeeProfile({
       <div
         className="employee-modal"
         onMouseDown={(event) => event.stopPropagation()}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="employee-details-title"
       >
         <div className="modal-header">
-          <div>
+          <div className="modal-header-copy">
             <span className="modal-eyebrow">EMPLOYEE PROFILE</span>
-            <h2>Employee Details</h2>
+            <h2 id="employee-details-title">Employee Details</h2>
           </div>
-
-          <button
-            className="icon-button"
-            type="button"
-            onClick={onClose}
-            aria-label="Close employee profile"
-          >
+          <button className="icon-button" type="button" onClick={onClose} aria-label="Close employee profile">
             <X size={20} />
           </button>
         </div>
 
         <div className="profile-hero">
-          <div className="profile-avatar">
+          <div className="profile-avatar" aria-hidden="true">
             {employee.image ? (
-              <img
-                src={employee.image}
-                alt={employee.name}
-              />
+              <img src={employee.image} alt="" />
             ) : (
-              employee.name
-                .split(" ")
-                .map((part) => part[0])
-                .slice(0, 2)
-                .join("")
-                .toUpperCase()
+              employee.name.split(" ").map((part) => part[0]).slice(0, 2).join("").toUpperCase()
             )}
           </div>
 
           <div className="profile-identity">
             <h3>{employee.name}</h3>
             <p>{employee.role || "Employee"}</p>
-
             <div className="profile-meta">
-              <span className={`status-badge ${employee.status?.toLowerCase().replace(/\s+/g, "-")}`}>
+              <span className={`status-badge ${statusClass(employee.status)}`}>
                 <span className="status-dot" />
                 {employee.status || "Unknown"}
               </span>
-
-              <span className="profile-id">
-                {employee.employeeId}
-              </span>
+              <span className="profile-id">{employee.employeeId}</span>
             </div>
           </div>
         </div>
@@ -83,160 +66,79 @@ function EmployeeProfile({
         <div className="profile-content">
           <section className="profile-section">
             <div className="profile-section-heading">
-              <UserRound size={17} />
+              <UserRound size={17} aria-hidden="true" />
               <h3>Personal Information</h3>
             </div>
-
             <div className="profile-grid">
-              <div className="detail-item">
-                <span>Full Name</span>
-                <strong>{employee.name}</strong>
-              </div>
-
-              <div className="detail-item">
-                <span>Gender</span>
-                <strong>{employee.gender || "Not provided"}</strong>
-              </div>
-
-              <div className="detail-item">
-                <span>Employee ID</span>
-                <strong>{employee.employeeId}</strong>
-              </div>
-
-              <div className="detail-item">
-                <span>Joining Year</span>
-                <strong>{employee.joiningYear || employee.year || "Not provided"}</strong>
-              </div>
+              <div className="detail-item"><span>Full Name</span><strong>{employee.name}</strong></div>
+              <div className="detail-item"><span>Gender</span><strong>{employee.gender || "Not provided"}</strong></div>
+              <div className="detail-item"><span>Employee ID</span><strong>{employee.employeeId}</strong></div>
+              <div className="detail-item"><span>Joining Year</span><strong>{employee.joiningYear || employee.year || "Not provided"}</strong></div>
             </div>
           </section>
 
           <section className="profile-section">
             <div className="profile-section-heading">
-              <BriefcaseBusiness size={17} />
+              <BriefcaseBusiness size={17} aria-hidden="true" />
               <h3>Work Information</h3>
             </div>
-
             <div className="profile-grid">
-              <div className="detail-item">
-                <span>Department</span>
-                <strong>{employee.department}</strong>
-              </div>
-
-              <div className="detail-item">
-                <span>Department ID</span>
-                <strong>{employee.departmentId || "Not provided"}</strong>
-              </div>
-
-              <div className="detail-item">
-                <span>Role</span>
-                <strong>{employee.role}</strong>
-              </div>
-
-              <div className="detail-item">
-                <span>Attendance</span>
-                <strong>{employee.attendance}%</strong>
-              </div>
+              <div className="detail-item"><span>Department</span><strong>{employee.department || "Not provided"}</strong></div>
+              <div className="detail-item"><span>Department ID</span><strong>{employee.departmentId || "Not provided"}</strong></div>
+              <div className="detail-item"><span>Role</span><strong>{employee.role || "Not provided"}</strong></div>
+              <div className="detail-item"><span>Attendance</span><strong>{Number(employee.attendance || 0)}%</strong></div>
             </div>
           </section>
 
           <section className="profile-section">
             <div className="profile-section-heading">
-              <Phone size={17} />
+              <Phone size={17} aria-hidden="true" />
               <h3>Contact Information</h3>
             </div>
-
             <div className="profile-grid">
-              <div className="detail-item">
-                <span>Phone</span>
-                <strong>{employee.phone || "Not provided"}</strong>
-              </div>
-
-              <div className="detail-item">
-                <span>Email</span>
-                <strong>{employee.email || "Not provided"}</strong>
-              </div>
-
-              <div className="detail-item full-width">
-                <span>Local Address</span>
-                <strong>
-                  {employee.localAddress || "Not provided"}
-                </strong>
-              </div>
-
-              <div className="detail-item full-width">
-                <span>Permanent Address</span>
-                <strong>
-                  {employee.permanentAddress || "Not provided"}
-                </strong>
-              </div>
+              <div className="detail-item"><span>Phone</span><strong>{employee.phone || "Not provided"}</strong></div>
+              <div className="detail-item"><span>Email</span><strong>{employee.email || "Not provided"}</strong></div>
+              <div className="detail-item full-width"><span>Local Address</span><strong>{employee.localAddress || "Not provided"}</strong></div>
+              <div className="detail-item full-width"><span>Permanent Address</span><strong>{employee.permanentAddress || "Not provided"}</strong></div>
             </div>
           </section>
 
           <section className="profile-section">
             <div className="profile-section-heading">
-              <CalendarDays size={17} />
+              <CalendarDays size={17} aria-hidden="true" />
               <h3>Projects</h3>
             </div>
-
             {projects.length > 0 ? (
               <div className="project-list">
                 {projects.map((project, index) => (
-                  <span className="project-chip" key={`${project}-${index}`}>
-                    {project}
-                  </span>
+                  <span className="project-chip" key={`${project}-${index}`}>{project}</span>
                 ))}
               </div>
             ) : (
-              <p className="not-provided">
-                No projects have been assigned yet.
-              </p>
+              <p className="not-provided">No projects have been assigned yet.</p>
             )}
           </section>
 
           <section className="profile-section">
             <div className="profile-section-heading">
-              <MapPin size={17} />
-              <h3>Additional Information</h3>
+              <MapPin size={17} aria-hidden="true" />
+              <h3>Current Status</h3>
             </div>
-
-            <div className="profile-grid">
-              <div className="detail-item">
-                <span>Status</span>
-                <strong>{employee.status || "Not provided"}</strong>
-              </div>
-
-              <div className="detail-item">
-                <span>Attendance</span>
-                <strong>{employee.attendance}%</strong>
-              </div>
+            <div className="profile-status-panel">
+              <div><span>Status</span><strong>{employee.status || "Not provided"}</strong></div>
+              <div><span>Attendance</span><strong>{Number(employee.attendance || 0)}%</strong></div>
             </div>
           </section>
         </div>
 
         <div className="modal-footer">
-          <button
-            className="danger-button"
-            type="button"
-            onClick={onDelete}
-          >
+          <button className="danger-button" type="button" onClick={onDelete}>
             <Trash2 size={16} />
             Delete Employee
           </button>
-
           <div className="modal-footer-actions">
-            <button
-              className="secondary-button"
-              type="button"
-              onClick={onClose}
-            >
-              Close
-            </button>
-
-            <button
-              className="primary-button"
-              type="button"
-              onClick={onEdit}
-            >
+            <button className="secondary-button" type="button" onClick={onClose}>Close</button>
+            <button className="primary-button" type="button" onClick={onEdit}>
               <Pencil size={16} />
               Edit Employee
             </button>
@@ -248,5 +150,3 @@ function EmployeeProfile({
 }
 
 export default EmployeeProfile;
-
-
