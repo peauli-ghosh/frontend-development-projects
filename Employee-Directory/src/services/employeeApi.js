@@ -1,4 +1,4 @@
-﻿const API_BASE_URL =
+const API_BASE_URL =
   import.meta.env.VITE_API_URL ||
   "http://localhost:3001";
 
@@ -11,6 +11,16 @@ export async function getEmployees() {
 
   if (!response.ok) {
     throw new Error("Unable to load employees.");
+  }
+
+  return response.json();
+}
+
+export async function getDepartments() {
+  const response = await fetch(DEPARTMENT_API_URL);
+
+  if (!response.ok) {
+    throw new Error("Unable to load departments.");
   }
 
   return response.json();

@@ -1,4 +1,4 @@
-﻿import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import {
   Activity,
   BriefcaseBusiness,
@@ -25,6 +25,7 @@ import DepartmentForm from "./components/DepartmentForm";
 
 import {
   getEmployees,
+  getDepartments,
   addEmployee,
   updateEmployee,
   deleteEmployee,
@@ -95,22 +96,13 @@ function App() {
 
     Promise.all([
       getEmployees(),
-      fetch("http://localhost:3001/departments")
+      getDepartments()
     ])
       .then(
         async ([
           employeeData,
-          departmentResponse
+          departmentData
         ]) => {
-          if (!departmentResponse.ok) {
-            throw new Error(
-              "Unable to load departments."
-            );
-          }
-
-          const departmentData =
-            await departmentResponse.json();
-
           if (cancelled) {
             return;
           }
