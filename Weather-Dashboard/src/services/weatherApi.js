@@ -516,9 +516,19 @@ export async function getWeatherBundleByCoordinates(
         `${AIR_URL}?lat=${latitude}&lon=${longitude}&appid=${API_KEY}`
       );
 
-    aqi =
-      air?.list?.[0]?.main?.aqi ||
-      null;
+    const airPoint = air?.list?.[0];
+
+    aqi = airPoint
+      ? {
+          index: airPoint.main?.aqi ?? null,
+          pm25: airPoint.components?.pm2_5 ?? null,
+          pm10: airPoint.components?.pm10 ?? null,
+          co: airPoint.components?.co ?? null,
+          no2: airPoint.components?.no2 ?? null,
+          o3: airPoint.components?.o3 ?? null,
+          so2: airPoint.components?.so2 ?? null
+        }
+      : null;
   } catch {
     aqi = null;
   }
@@ -579,11 +589,7 @@ export async function getWeatherBundleByCoordinates(
       icon:
         ICON_URL(icon),
 
-      conditionGroup:
-        groupFor(
-          condition,
-          description
-        ),
+      conditionGroup: condition.toLowerCase(),
 
       high:
         Math.round(
@@ -613,7 +619,10 @@ export async function getWeatherBundleByCoordinates(
           id: weatherId,
           description,
           icon,
-          windSpeed
+          windSpeed,
+          timestamp: current.dt,
+          sunrise: current.sys?.sunrise,
+          sunset: current.sys?.sunset
         })
     },
 
@@ -720,8 +729,7 @@ export async function getWeatherBundle(locationInput) {
   const [
     current,
     forecast,
-    airResult,
-    dailyForecast
+    airResult
   ] =
     await Promise.all([
       fetchJson(
@@ -734,10 +742,6 @@ export async function getWeatherBundle(locationInput) {
 
       fetchJson(
         `${AIR_URL}?${baseParams.toString()}`
-      ).catch(() => null),
-
-      fetchJson(
-        `${DAILY_FORECAST_URL}?${baseParams.toString()}&cnt=7`
       ).catch(() => null)
     ]);
 
@@ -923,6 +927,10 @@ export async function getWeatherBundle(locationInput) {
       : null
   };
 }
+
+
+
+
 
 
 
