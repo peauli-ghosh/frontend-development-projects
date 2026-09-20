@@ -1,0 +1,17 @@
+import { useEffect } from 'react';
+import { useParams, Link, useNavigate } from 'react-router-dom';
+import { Heart, ShoppingCart, Star, ShieldCheck, Truck, RotateCcw, ArrowLeft, Minus, Plus } from 'lucide-react';
+import { useShop } from '../context/ShopContext';
+import ProductCard from '../components/ProductCard';
+import { getProductImage } from '../utils/productImage';
+export default function ProductPage(){
+ const {id}=useParams(); const {products,state,dispatch}=useShop(); const navigate=useNavigate(); const product=products.find(p=>String(p.id)===id);
+ useEffect(()=>{window.scrollTo({top:0,left:0,behavior:'auto'});if(product)dispatch({type:'ADD_RECENT',id:product.id})},[product?.id,dispatch]);
+ if(!product)return <main className="empty-page"><h2>Product not found</h2><Link to="/">Back to shop</Link></main>;
+ const liked=state.wishlist.includes(product.id), item=state.cart.find(i=>i.id===product.id), qty=item?.qty||0, discount=Math.round((1-product.price/product.oldPrice)*100);
+ const add=()=>dispatch({type:'ADD_TO_CART',product});
+ const buyNow=()=>{if(!qty)add();navigate('/cart')};
+ const related=products.filter(p=>p.category===product.category&&p.id!==product.id).slice(0,5);
+ return <main className="page-width product-page"><Link to="/shop" className="back-link"><ArrowLeft size={16}/> Back to shopping</Link><div className="detail-grid"><div className="detail-image"><span className="discount-pill">-{discount}%</span><img src={getProductImage(product)} alt={product.title}/></div><div className="detail-copy"><span className="product-badge">{product.badge}</span><div className="detail-brand">{product.brand}</div><h1>{product.title}</h1><div className="detail-rating"><span className="rating"><Star size={14} fill="currentColor"/> {product.rating}</span><span>{product.reviews.toLocaleString('en-IN')} ratings & reviews</span></div><div className="detail-price"><strong>₹{product.price.toLocaleString('en-IN')}</strong><del>₹{product.oldPrice.toLocaleString('en-IN')}</del><span>{discount}% off</span></div><p className="tax-note">Inclusive of all applicable taxes</p><div className="offer-box"><b>🏷️ Special offer</b><p>Use <strong>WELCOME20</strong> for 20% off your product subtotal.</p></div><div className="detail-actions">{qty>0?<div className="detail-stepper"><button onClick={()=>dispatch({type:'DECREMENT_CART',id:product.id})}><Minus/></button><b>{qty}</b><button onClick={add} disabled={qty>=product.stock}><Plus/></button></div>:<button className="add-large" onClick={add}><ShoppingCart/> Add to cart</button>}<button className="buy-large" onClick={buyNow}>Buy now</button><button className={`detail-wish ${liked?'liked':''}`} onClick={()=>dispatch({type:'TOGGLE_WISHLIST',id:product.id})}><Heart fill={liked?'currentColor':'none'}/></button></div><div className="service-grid"><div><Truck/><b>Delivery</b><span>Free delivery by {product.delivery}</span></div><div><RotateCcw/><b>Returns</b><span>7-day easy returns</span></div><div><ShieldCheck/><b>Warranty</b><span>Quality checked product</span></div></div><div className="stock-note">● {product.stock<=8?`Only ${product.stock} left — order soon`:'In stock and ready to ship'}</div></div></div><section className="related"><SectionTitleLite/><div className="product-grid">{related.map(p=><ProductCard key={p.id} product={p}/>)}</div></section></main>
+}
+function SectionTitleLite(){return <div className="section-title"><div><span>YOU MAY ALSO LIKE</span><h2>More from this category</h2></div></div>}
