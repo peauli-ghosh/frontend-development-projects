@@ -196,31 +196,6 @@ Core requirements implemented include:
 BCA (Hons.)
 Techno India University, Kolkata
 
-## Repository
-
-Part of the `frontend-development-projects` repository containing React and Vite frontend projects.
-
-````
-
-Save the file with **Ctrl + S**, then close Notepad.
-
----
-
-### 4. Check the project
-
-Back in PowerShell:
-
-```powershell
-git status --short
-````
-
-You should see something similar to:
-
-```text
- D Online-Shopping-App/PROJECT_CHECKLIST.md
- M Online-Shopping-App/README.md
-```
-
 You may also see the unrelated Weather Dashboard changes. **Leave those alone.**
 
 ---
