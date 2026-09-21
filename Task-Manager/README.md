@@ -221,8 +221,3 @@ Techno India University, Kolkata
 ## License
 
 This project was created as part of an academic React assignment.
-
-```
-
-This version is better for your GitHub repo because it focuses on **what the application does, its routing, features, technologies, setup, and assignment requirements**, rather than spending space on the visual design terminology.
-```
