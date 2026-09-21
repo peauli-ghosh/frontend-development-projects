@@ -1,8 +1,3 @@
-You're right — **Assignment 6 has nothing to do in this README.** I mixed the projects together.
-
-Here is a README for **Authentication System / Assignment 7**, written in the **same straightforward GitHub style and structure** as your Task Manager README. It focuses on the actual project rather than over-explaining the design.
-
-````markdown
 # Authentication System
 
 A responsive full-stack Authentication System built with React, React Router, Node.js, Express, SQLite, bcrypt, and JWT authentication. The application allows users to create accounts, securely log in, maintain authenticated sessions, access protected pages, and log out through a real server-side authentication system.
